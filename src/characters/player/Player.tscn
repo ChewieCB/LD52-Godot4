@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://byol1svprhp55"]
+
+[ext_resource type="Texture2D" uid="uid://sh4yhtwa8ba" path="res://assets/characters/player_temp.png" id="1_bue6g"]
+[ext_resource type="Script" path="res://src/characters/player/player.gd" id="1_nrqrt"]
+[ext_resource type="Script" path="res://src/utils/state_machine/states/move_state.gd" id="3_dl3ym"]
+[ext_resource type="Script" path="res://src/utils/state_machine/state_manager.gd" id="3_gbjv8"]
+[ext_resource type="Script" path="res://src/characters/player/states/idle_state.gd" id="4_yo3vx"]
+[ext_resource type="Script" path="res://src/characters/player/states/walk_state.gd" id="5_6avw1"]
+[ext_resource type="Script" path="res://src/characters/player/states/death_state.gd" id="7_p6jiq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6wnf"]
+size = Vector2(31, 43)
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 7
+motion_mode = 1
+script = ExtResource("1_nrqrt")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_bue6g")
+region_rect = Rect2(0, 0, 48, 32)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, -0.5)
+shape = SubResource("RectangleShape2D_d6wnf")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("actor", "starting_state")]
+script = ExtResource("3_gbjv8")
+actor = NodePath("..")
+starting_state = NodePath("MoveState/IdleState")
+
+[node name="MoveState" type="Node" parent="StateManager" node_paths=PackedStringArray("idle_state", "walk_state")]
+script = ExtResource("3_dl3ym")
+idle_state = NodePath("IdleState")
+walk_state = NodePath("WalkState")
+
+[node name="IdleState" type="Node" parent="StateManager/MoveState" node_paths=PackedStringArray("idle_state", "walk_state")]
+script = ExtResource("4_yo3vx")
+idle_state = NodePath(".")
+walk_state = NodePath("../WalkState")
+
+[node name="WalkState" type="Node" parent="StateManager/MoveState" node_paths=PackedStringArray("idle_state", "walk_state")]
+script = ExtResource("5_6avw1")
+idle_state = NodePath("../IdleState")
+walk_state = NodePath(".")
+
+[node name="DeathState" type="Node" parent="StateManager"]
+script = ExtResource("7_p6jiq")
+
+[node name="StateLabel" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -48.0
+offset_right = 23.0
+offset_bottom = -22.0
+size_flags_horizontal = 4
+text = "STATE"
+horizontal_alignment = 1
+vertical_alignment = 1

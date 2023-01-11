@@ -1,0 +1,4 @@
+res://src/utils/scripts
+res://src/characters/player/states
+res://src/utils/state_machine
+res://src/utils/state_machine/states

@@ -1,0 +1,8 @@
+res://src/levels/test/TestLevel.tscn
+res://src/characters/player/Player.tscn
+res://src/utils/state_machine/states/move_state.gd
+res://src/utils/state_machine/state_manager.gd
+res://src/utils/scripts/helper.gd
+res://src/utils/state_machine/base_state.gd
+res://src/characters/player/states/idle_state.gd
+res://src/characters/player/states/walk_state.gd
