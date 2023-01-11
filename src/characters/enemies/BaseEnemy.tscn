@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://dylqpjmg70bnd"]
+
+[ext_resource type="Script" path="res://src/characters/enemies/base_enemy.gd" id="1_85kf1"]
+[ext_resource type="Texture2D" uid="uid://cgdhkvbmdb4t5" path="res://assets/characters/enemy_melee_temp.png" id="1_n0agb"]
+[ext_resource type="Script" path="res://src/utils/state_machine/state_manager.gd" id="2_whk2e"]
+[ext_resource type="Script" path="res://src/utils/state_machine/states/move_state.gd" id="3_sv0yr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bdcfo"]
+size = Vector2(41, 47)
+
+[node name="BaseEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 15
+script = ExtResource("1_85kf1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n0agb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_bdcfo")
+
+[node name="StateManager" type="Node" parent="."]
+script = ExtResource("2_whk2e")
+
+[node name="MoveState" type="Node" parent="StateManager"]
+script = ExtResource("3_sv0yr")
+
+[node name="IdleState" type="Node" parent="StateManager/MoveState"]
+
+[node name="FollowState" type="Node" parent="StateManager/MoveState"]
+
+[node name="ChaseState" type="Node" parent="StateManager/MoveState"]
+
+[node name="SearchState" type="Node" parent="StateManager/MoveState"]
+
+[node name="ReturnState" type="Node" parent="StateManager/MoveState"]
+
+[node name="AttackState" type="Node" parent="StateManager"]
+
+[node name="ViewCone" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ViewCone"]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

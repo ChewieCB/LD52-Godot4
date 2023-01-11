@@ -6,3 +6,5 @@ res://src/utils/scripts/helper.gd
 res://src/utils/state_machine/base_state.gd
 res://src/characters/player/states/idle_state.gd
 res://src/characters/player/states/walk_state.gd
+res://src/characters/enemies/BaseEnemy.tscn
+res://src/characters/enemies/base_enemy.gd
