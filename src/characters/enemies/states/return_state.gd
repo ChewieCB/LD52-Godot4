@@ -20,21 +20,18 @@ func input(event: InputEvent) -> BaseState:
 
 
 func physics_process(delta: float) -> BaseState:
-	if actor.global_position == actor.initial_position:
+	if actor._agent.is_navigation_finished():
 		return idle_state
 	
-	if not actor.can_chase:
-		return idle_state
-	else:
-		var direction := actor.global_position.direction_to(actor.next_location)
-		actor.global_rotation = direction.angle()
-		var desired_velocity := direction * 400.0
-		var steering := (desired_velocity - actor.velocity) * delta * 4.0
-		apply_acceleration(steering)
-		apply_movement()
+	if actor.viewcone.overlaps_body(actor.player):
+		actor.target_node = actor.player
+		return chase_state
+	
+	var direction := actor.global_position.direction_to(actor.next_location)
+	actor.global_rotation = direction.angle()
+	var desired_velocity := direction * 400.0
+	var steering := (desired_velocity - actor.velocity) * delta * 4.0
+	apply_acceleration(steering)
+	apply_movement()
 	
 	return null
-
-
-func _on_navigation_agent_2d_target_reached():
-	pass

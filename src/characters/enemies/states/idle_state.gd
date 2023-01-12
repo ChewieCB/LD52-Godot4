@@ -8,7 +8,8 @@ func enter() -> void:
 
 
 func physics_process(delta: float) -> BaseState:
-	if actor.distance_to_target > 120:
+	if actor.viewcone.overlaps_body(actor.player):
+		actor.target_node = actor.player
 		return chase_state
 	
 	apply_friction(friction)

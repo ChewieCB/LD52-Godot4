@@ -35,6 +35,7 @@ func init(_actor: CharacterBody2D) -> void:
 func physics_process(delta: float) -> void:
 	var new_state = current_state.physics_process(delta)
 	if new_state:
+		print(actor.name, new_state.name)
 		change_state(new_state)
 
 

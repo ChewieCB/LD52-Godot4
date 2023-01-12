@@ -1533,11 +1533,13 @@ layer_2/tile_data = PackedInt32Array()
 
 [node name="Player" parent="." instance=ExtResource("1_dekb5")]
 
-[node name="BaseEnemy" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("3_tmutn")]
+[node name="BaseEnemy" parent="." node_paths=PackedStringArray("player", "target_node") instance=ExtResource("3_tmutn")]
 position = Vector2(-736, -576)
-target_node = NodePath("../Player")
+player = NodePath("../Player")
+target_node = NodePath("")
 
-[node name="BaseEnemy2" parent="." node_paths=PackedStringArray("target_node") instance=ExtResource("3_tmutn")]
+[node name="BaseEnemy2" parent="." node_paths=PackedStringArray("player", "target_node") instance=ExtResource("3_tmutn")]
 position = Vector2(704, -712)
 rotation = 2.35619
-target_node = NodePath("../Player")
+player = NodePath("../Player")
+target_node = NodePath("")

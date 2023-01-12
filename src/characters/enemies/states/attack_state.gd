@@ -3,11 +3,10 @@ extends AIState
 @onready var timer := $AttackDelayTimer
 @export var move_state: AIMoveState
 
-var timer_finished: bool
+var timer_finished: bool = false
 
 
 func enter() -> void:
-	timer_finished = false
 	timer.start()
 
 
@@ -24,13 +23,14 @@ func physics_process(delta: float) -> BaseState:
 		return move_state.chase_state
 	
 	if timer_finished:
+		timer_finished = false
 		return move_state.return_state
 	
 	return null
 
 
 func _on_attack_delay_timer_timeout():
-	if actor.target:
+	if actor.target_node:
 		actor.target_node.death()
 	timer_finished = true
 	

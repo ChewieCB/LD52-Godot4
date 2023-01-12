@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cs4u6rgsu7gds"]
+[gd_scene load_steps=13 format=3 uid="uid://cs4u6rgsu7gds"]
 
 [ext_resource type="Script" path="res://src/characters/enemies/base_enemy.gd" id="1_85kf1"]
 [ext_resource type="Texture2D" uid="uid://cgdhkvbmdb4t5" path="res://assets/characters/enemy_melee_temp.png" id="1_n0agb"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://src/characters/enemies/states/search_state.gd" id="8_psnr6"]
 [ext_resource type="Script" path="res://src/characters/enemies/states/return_state.gd" id="9_jor3s"]
 [ext_resource type="Script" path="res://src/characters/enemies/states/attack_state.gd" id="10_g7cen"]
+[ext_resource type="Script" path="res://src/characters/enemies/view_cone.gd" id="11_8eg5v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bdcfo"]
 size = Vector2(41, 47)
@@ -96,6 +97,7 @@ attack_state = NodePath(".")
 [node name="AttackDelayTimer" type="Timer" parent="StateManager/AttackState"]
 
 [node name="ViewCone" type="Area2D" parent="."]
+script = ExtResource("11_8eg5v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ViewCone"]
 
@@ -115,4 +117,3 @@ offset_bottom = -22.0
 text = "STATE"
 
 [connection signal="timeout" from="StateManager/AttackState/AttackDelayTimer" to="StateManager/AttackState" method="_on_attack_delay_timer_timeout"]
-[connection signal="target_reached" from="NavigationAgent2D" to="StateManager/MoveState/ReturnState" method="_on_navigation_agent_2d_target_reached"]
