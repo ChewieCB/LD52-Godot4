@@ -1,4 +1,5 @@
+res://src/characters/enemies/states
 res://src/utils/state_machine
-res://src/utils/scripts
 res://src/characters/player/states
+res://src/utils/scripts
 res://src/utils/state_machine/states

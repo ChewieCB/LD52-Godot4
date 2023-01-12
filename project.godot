@@ -9,6 +9,21 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "MoveState",
+"class": &"AIMoveState",
+"language": &"GDScript",
+"path": "res://src/characters/enemies/states/ai_move_state.gd"
+}, {
+"base": "CharacterBody2D",
+"class": &"BaseCharacter",
+"language": &"GDScript",
+"path": "res://src/characters/base_character.gd"
+}, {
+"base": "BaseCharacter",
+"class": &"BaseEnemy",
+"language": &"GDScript",
+"path": "res://src/characters/enemies/base_enemy.gd"
+}, {
 "base": "Node",
 "class": &"BaseState",
 "language": &"GDScript",
@@ -19,15 +34,24 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://src/utils/state_machine/states/move_state.gd"
 }, {
-"base": "CharacterBody2D",
+"base": "BaseCharacter",
 "class": &"Player",
 "language": &"GDScript",
 "path": "res://src/characters/player/player.gd"
+}, {
+"base": "Node",
+"class": &"StateManager",
+"language": &"GDScript",
+"path": "res://src/utils/state_machine/state_manager.gd"
 }]
 _global_script_class_icons={
+"AIMoveState": "",
+"BaseCharacter": "",
+"BaseEnemy": "",
 "BaseState": "",
 "MoveState": "",
-"Player": ""
+"Player": "",
+"StateManager": ""
 }
 
 [application]

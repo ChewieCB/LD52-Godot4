@@ -2,7 +2,7 @@ class_name MoveState
 extends BaseState
 
 @export var move_speed: float = 250
-@export var max_speed: float = 400
+@export var max_speed: float = 320
 
 @export var idle_state: MoveState
 @export var walk_state: MoveState
@@ -28,17 +28,17 @@ func get_movement_input() -> Vector2:
 
 
 func apply_friction(amount: float) -> void:
-	if player.velocity.length() > amount:
-		player.velocity -= player.velocity.normalized() * amount
+	if actor.velocity.length() > amount:
+		actor.velocity -= actor.velocity.normalized() * amount
 	else:
-		player.velocity = Vector2.ZERO
+		actor.velocity = Vector2.ZERO
 
 
 func apply_acceleration(acceleration: Vector2) -> void:
-	player.velocity += acceleration
-	player.velocity = player.velocity.limit_length(max_speed)
+	actor.velocity += acceleration
+	actor.velocity = actor.velocity.limit_length(max_speed)
 
 
 func apply_movement() -> void:
-	player.move_and_slide()
-	player.look_at(player.get_global_mouse_position())
+	actor.move_and_slide()
+	actor.look_at(actor.get_global_mouse_position())

@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://sh4yhtwa8ba" path="res://assets/characters/player_temp.png" id="1_bue6g"]
 [ext_resource type="Script" path="res://src/characters/player/player.gd" id="1_nrqrt"]
 [ext_resource type="Script" path="res://src/utils/state_machine/states/move_state.gd" id="3_dl3ym"]
-[ext_resource type="Script" path="res://src/utils/state_machine/state_manager.gd" id="3_gbjv8"]
+[ext_resource type="Script" path="res://src/utils/state_machine/state_manager.gd" id="3_f1tag"]
 [ext_resource type="Script" path="res://src/characters/player/states/idle_state.gd" id="4_yo3vx"]
 [ext_resource type="Script" path="res://src/characters/player/states/walk_state.gd" id="5_6avw1"]
 [ext_resource type="Script" path="res://src/characters/player/states/death_state.gd" id="7_p6jiq"]
@@ -27,9 +27,8 @@ shape = SubResource("RectangleShape2D_d6wnf")
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
 
-[node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("actor", "starting_state")]
-script = ExtResource("3_gbjv8")
-actor = NodePath("..")
+[node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("3_f1tag")
 starting_state = NodePath("MoveState/IdleState")
 
 [node name="MoveState" type="Node" parent="StateManager" node_paths=PackedStringArray("idle_state", "walk_state")]

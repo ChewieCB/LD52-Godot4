@@ -1,3 +1,4 @@
+Label
 Node2D
 NavigationAgent2D
 NavigationRegion2D
@@ -8,5 +9,4 @@ Node
 Sprite2D
 CharacterBody2D
 TileMap
-Label
 Camera2D

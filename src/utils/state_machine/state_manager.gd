@@ -1,8 +1,9 @@
+class_name StateManager
 extends Node
 
-@onready @export var actor: CharacterBody2D
-@onready @export var starting_state: Node
+@onready @export var starting_state: BaseState
 
+var actor: CharacterBody2D
 var current_state: BaseState
 
 
@@ -12,15 +13,18 @@ func change_state(new_state: BaseState) -> void:
 
 	current_state = new_state
 	current_state.enter()
-	actor.state_label.text = current_state.name
+	
+	if actor:
+		actor.state_label.text = current_state.name
 
 
 # Initialize the state machine by giving each state a reference to the objects
 # owned by the parent that they should be able to take control of
 # and set a default state
-func init(player: Player) -> void:
+func init(_actor: CharacterBody2D) -> void:
+	actor = _actor
 	for child in get_children():
-		child.player = player
+		child.actor = _actor
 
 	# Initialize with a default state of idle
 	change_state(starting_state)
