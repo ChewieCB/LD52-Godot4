@@ -5,6 +5,7 @@ extends MoveState
 @export var chase_state: MoveState
 @export var search_state: MoveState
 @export var return_state: MoveState
+@export var attack_state: AIState
 
 
 func input(event: InputEvent) -> BaseState:

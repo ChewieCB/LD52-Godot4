@@ -15,6 +15,9 @@ func input(event: InputEvent) -> BaseState:
 
 
 func physics_process(delta: float) -> BaseState:
+	if actor.is_dead:
+		return death_state
+	
 	input_vector = get_movement_input()
 
 	return null

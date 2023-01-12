@@ -8,6 +8,9 @@ func enter() -> void:
 
 
 func physics_process(delta: float) -> BaseState:
+	if actor.is_dead:
+		return death_state
+	
 	input_vector = get_movement_input()
 	
 	apply_friction(friction)

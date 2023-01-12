@@ -1,10 +1,18 @@
-extends AIMoveState
+extends AIState
 
-@export var friction: float = 250
+@onready var timer := $AttackDelayTimer
+@export var move_state: AIMoveState
+
+var timer_finished: bool
 
 
 func enter() -> void:
-	super.enter()
+	timer_finished = false
+	timer.start()
+
+
+func exit() -> void:
+	timer.stop()
 
 
 func input(event: InputEvent) -> BaseState:
@@ -12,7 +20,17 @@ func input(event: InputEvent) -> BaseState:
 
 
 func physics_process(delta: float) -> BaseState:
-	apply_friction(friction)
-	apply_movement()
+	if actor.distance_to_target > 120:
+		return move_state.chase_state
+	
+	if timer_finished:
+		return move_state.idle_state
 	
 	return null
+
+
+func _on_attack_delay_timer_timeout():
+	if actor.target:
+		actor.target.death()
+	timer_finished = true
+	

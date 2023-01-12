@@ -31,23 +31,27 @@ current = true
 script = ExtResource("3_f1tag")
 starting_state = NodePath("MoveState/IdleState")
 
-[node name="MoveState" type="Node" parent="StateManager" node_paths=PackedStringArray("idle_state", "walk_state")]
+[node name="MoveState" type="Node" parent="StateManager" node_paths=PackedStringArray("idle_state", "walk_state", "death_state")]
 script = ExtResource("3_dl3ym")
 idle_state = NodePath("IdleState")
 walk_state = NodePath("WalkState")
+death_state = NodePath("../DeathState")
 
-[node name="IdleState" type="Node" parent="StateManager/MoveState" node_paths=PackedStringArray("idle_state", "walk_state")]
+[node name="IdleState" type="Node" parent="StateManager/MoveState" node_paths=PackedStringArray("idle_state", "walk_state", "death_state")]
 script = ExtResource("4_yo3vx")
 idle_state = NodePath(".")
 walk_state = NodePath("../WalkState")
+death_state = NodePath("../../DeathState")
 
-[node name="WalkState" type="Node" parent="StateManager/MoveState" node_paths=PackedStringArray("idle_state", "walk_state")]
+[node name="WalkState" type="Node" parent="StateManager/MoveState" node_paths=PackedStringArray("idle_state", "walk_state", "death_state")]
 script = ExtResource("5_6avw1")
 idle_state = NodePath("../IdleState")
 walk_state = NodePath(".")
+death_state = NodePath("../../DeathState")
 
-[node name="DeathState" type="Node" parent="StateManager"]
+[node name="DeathState" type="Node" parent="StateManager" node_paths=PackedStringArray("death_state")]
 script = ExtResource("7_p6jiq")
+death_state = NodePath(".")
 
 [node name="StateLabel" type="Label" parent="."]
 offset_left = -24.0
