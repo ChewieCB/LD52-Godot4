@@ -14,8 +14,8 @@ func physics_process(delta: float) -> BaseState:
 	if actor._agent.is_navigation_finished():
 		await(get_tree().create_timer(1.0))
 	
-	if not actor.can_chase or actor.is_dead:
-		return idle_state
+	if not actor.can_chase or (actor.target_node and actor.target_node.is_dead):
+		return return_state
 	else:
 		var direction := actor.global_position.direction_to(actor.next_location)
 		actor.global_rotation = direction.angle()
@@ -25,4 +25,3 @@ func physics_process(delta: float) -> BaseState:
 		apply_movement()
 	
 	return null
-

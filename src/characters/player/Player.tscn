@@ -26,6 +26,7 @@ shape = SubResource("RectangleShape2D_d6wnf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
+zoom = Vector2(0.4, 0.4)
 
 [node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("3_f1tag")
@@ -54,6 +55,7 @@ script = ExtResource("7_p6jiq")
 death_state = NodePath(".")
 
 [node name="StateLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
 offset_left = -24.0
 offset_top = -48.0
 offset_right = 23.0

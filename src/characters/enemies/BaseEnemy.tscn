@@ -100,13 +100,14 @@ attack_state = NodePath(".")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ViewCone"]
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 8.0
-target_desired_distance = 42.0
+path_desired_distance = 32.0
+target_desired_distance = 48.0
 path_max_distance = 32.0
 avoidance_enabled = true
 radius = 64.0
 
 [node name="StateLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
 offset_left = -24.0
 offset_top = -48.0
 offset_right = 23.0
@@ -114,3 +115,4 @@ offset_bottom = -22.0
 text = "STATE"
 
 [connection signal="timeout" from="StateManager/AttackState/AttackDelayTimer" to="StateManager/AttackState" method="_on_attack_delay_timer_timeout"]
+[connection signal="target_reached" from="NavigationAgent2D" to="StateManager/MoveState/ReturnState" method="_on_navigation_agent_2d_target_reached"]

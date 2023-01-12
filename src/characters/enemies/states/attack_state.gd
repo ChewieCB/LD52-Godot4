@@ -24,13 +24,13 @@ func physics_process(delta: float) -> BaseState:
 		return move_state.chase_state
 	
 	if timer_finished:
-		return move_state.idle_state
+		return move_state.return_state
 	
 	return null
 
 
 func _on_attack_delay_timer_timeout():
 	if actor.target:
-		actor.target.death()
+		actor.target_node.death()
 	timer_finished = true
 	

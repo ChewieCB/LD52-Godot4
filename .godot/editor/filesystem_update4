@@ -4,3 +4,9 @@ res://src/levels/test/TestLevel.tscn
 res://src/characters/player/Player.tscn
 res://src/utils/state_machine/base_state.gd
 res://src/characters/enemies/states/chase_state.gd
+res://src/characters/enemies/base_enemy.gd
+res://src/characters/enemies/states/return_state.gd
+res://src/characters/enemies/states/attack_state.gd
+res://src/characters/base_character.gd
+res://src/characters/enemies/states/idle_state.gd
+res://src/characters/enemies/states/ai_move_state.gd

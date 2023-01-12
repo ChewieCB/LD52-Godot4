@@ -13,7 +13,7 @@ func input(event: InputEvent) -> BaseState:
 
 
 func physics_process(delta: float) -> BaseState:
-	if actor.target:
+	if actor.target_node:
 		return chase_state
 	
 	return null

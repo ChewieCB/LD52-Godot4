@@ -25,3 +25,5 @@ func _process(delta: float) -> void:
 
 func death() -> void:
 	is_dead = true
+	# Disable collision for corpses
+	self.set_collision_layer_value(1, false)
