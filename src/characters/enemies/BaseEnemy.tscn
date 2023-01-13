@@ -95,6 +95,7 @@ move_state = NodePath("../MoveState")
 attack_state = NodePath(".")
 
 [node name="AttackDelayTimer" type="Timer" parent="StateManager/AttackState"]
+wait_time = 0.4
 
 [node name="ViewCone" type="Area2D" parent="."]
 script = ExtResource("11_8eg5v")
@@ -102,11 +103,11 @@ script = ExtResource("11_8eg5v")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ViewCone"]
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 32.0
+path_desired_distance = 16.0
 target_desired_distance = 48.0
-path_max_distance = 32.0
+path_max_distance = 64.0
 avoidance_enabled = true
-radius = 64.0
+radius = 48.0
 
 [node name="StateLabel" type="Label" parent="."]
 modulate = Color(0, 0, 0, 1)

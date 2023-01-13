@@ -26,7 +26,7 @@ shape = SubResource("RectangleShape2D_d6wnf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2(0.75, 0.75)
+zoom = Vector2(0.4, 0.4)
 
 [node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("3_f1tag")

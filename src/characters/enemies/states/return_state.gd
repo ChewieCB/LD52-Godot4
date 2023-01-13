@@ -6,7 +6,15 @@ var original_target_desired_distance: float
 
 func enter() -> void:
 	actor.target_node = null
-	actor.target = actor.initial_position
+	if actor.is_following:
+		var closest_path_point = actor.follow_path.curve.get_closest_point(actor.global_position)
+		follow_state.path_index = Array(
+			actor.follow_path.curve.get_baked_points()
+		).find(closest_path_point)
+		actor.target = closest_path_point
+	else:
+		actor.target = actor.initial_position
+	
 	original_target_desired_distance = actor._agent.target_desired_distance
 	actor._agent.target_desired_distance = 1.0
 
@@ -29,7 +37,7 @@ func physics_process(delta: float) -> BaseState:
 	
 	var direction := actor.global_position.direction_to(actor.next_location)
 	actor.global_rotation = direction.angle()
-	var desired_velocity := direction * 400.0
+	var desired_velocity := direction * 150.0
 	var steering := (desired_velocity - actor.velocity) * delta * 4.0
 	apply_acceleration(steering)
 	apply_movement()

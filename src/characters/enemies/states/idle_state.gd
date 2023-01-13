@@ -12,6 +12,9 @@ func physics_process(delta: float) -> BaseState:
 		actor.target_node = actor.player
 		return chase_state
 	
+	if actor.is_following:
+		return follow_state
+	
 	apply_friction(friction)
 	apply_movement()
 	

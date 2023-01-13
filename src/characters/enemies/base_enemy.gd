@@ -3,6 +3,8 @@ extends BaseCharacter
 
 @export @onready var player: Player
 @export @onready var target_node: Node
+@export @onready var follow_path: Path2D
+@export var is_following: bool = false
 var target: Vector2
 @onready var _agent = $NavigationAgent2D
 @onready var initial_position := self.global_position
@@ -26,6 +28,8 @@ func _ready() -> void:
 
 
 func _draw() -> void:
+#	if target:
+#		draw_circle(to_local(target), 8.0, Color.RED)
 	if last_seen_player:
 		draw_circle(to_local(last_seen_player), 8.0, Color.PURPLE)
 
