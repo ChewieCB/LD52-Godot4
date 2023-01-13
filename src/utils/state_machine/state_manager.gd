@@ -33,7 +33,7 @@ func init(_actor: CharacterBody2D) -> void:
 # Pass through functions for the Player to call,
 # handling state changes as needed
 func physics_process(delta: float) -> void:
-	var new_state = current_state.physics_process(delta)
+	var new_state = await current_state.physics_process(delta)
 	if new_state:
 		print(actor.name, new_state.name)
 		change_state(new_state)

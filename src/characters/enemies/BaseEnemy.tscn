@@ -117,3 +117,4 @@ offset_bottom = -22.0
 text = "STATE"
 
 [connection signal="timeout" from="StateManager/AttackState/AttackDelayTimer" to="StateManager/AttackState" method="_on_attack_delay_timer_timeout"]
+[connection signal="body_exited" from="ViewCone" to="." method="_on_view_cone_body_exited"]

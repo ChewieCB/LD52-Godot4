@@ -13,6 +13,8 @@ var distance_to_target: float
 var next_location: Vector2
 var can_chase: bool = false
 
+var last_seen_player: Vector2
+
 
 func _ready() -> void:
 	super._ready()
@@ -20,6 +22,12 @@ func _ready() -> void:
 		target = target_node.global_position
 	if target:
 		_agent.set_target_location(target)
+		last_seen_player = target
+
+
+func _draw() -> void:
+	if last_seen_player:
+		draw_circle(to_local(last_seen_player), 8.0, Color.PURPLE)
 
 
 func _process(_delta: float) -> void:
@@ -45,13 +53,6 @@ func _physics_process(delta: float) -> void:
 	states.physics_process(delta)
 
 
-#func _on_view_cone_body_entered(body):
-#	if body is Player:
-#		target_node = body
-#		states.change_state($StateManager/MoveState/ChaseState)
-#
-#
-#
-#func _on_view_cone_body_exited(body):
-#	if body is Player:
-#		states.change_state($StateManager/MoveState/ReturnState)
+func _on_view_cone_body_exited(body):
+	if body is Player:
+		last_seen_player = body.global_position

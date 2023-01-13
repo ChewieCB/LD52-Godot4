@@ -11,7 +11,7 @@ func enter() -> void:
 
 func physics_process(delta: float) -> BaseState:
 	if not actor.viewcone.overlaps_body(actor.player):
-		return return_state
+		return search_state
 	
 	if actor.distance_to_target < 60:
 		return attack_state
