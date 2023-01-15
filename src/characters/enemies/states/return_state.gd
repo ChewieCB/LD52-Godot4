@@ -37,7 +37,7 @@ func physics_process(delta: float) -> BaseState:
 	
 	var direction := actor.global_position.direction_to(actor.next_location)
 	actor.global_rotation = direction.angle()
-	var desired_velocity := direction * 150.0
+	var desired_velocity := direction * 75.0
 	var steering := (desired_velocity - actor.velocity) * delta * 4.0
 	apply_acceleration(steering)
 	apply_movement()

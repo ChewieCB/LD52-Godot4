@@ -2,9 +2,17 @@ extends AIMoveState
 
 
 func enter() -> void:
+	actor.target_node = null
 	var map = NavigationServer2D.agent_get_map(actor._agent)
 	var closest_point = NavigationServer2D.map_get_closest_point(map, actor.last_seen_player)
-	actor.target = closest_point
+#	# Move the closest point a bit closer to the enemy for safety
+	closest_point += closest_point.direction_to(actor.global_position) * 16
+	if actor._agent.is_target_reachable():
+		actor.target = closest_point
+
+
+func exit() -> void:
+	actor.last_seen_player = Vector2()
 
 
 func physics_process(delta: float) -> BaseState:
@@ -13,11 +21,12 @@ func physics_process(delta: float) -> BaseState:
 		return chase_state
 	
 	if actor._agent.is_navigation_finished():
-		return await search()
+		var _temp =  await search()
+		return return_state
 	
 	var direction := actor.global_position.direction_to(actor.next_location)
 	actor.global_rotation = direction.angle()
-	var desired_velocity := direction * 320.0
+	var desired_velocity := direction * 160.0
 	var steering := (desired_velocity - actor.velocity) * delta * 4.0
 	apply_acceleration(steering)
 	apply_movement()

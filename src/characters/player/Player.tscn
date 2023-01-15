@@ -9,7 +9,7 @@
 [ext_resource type="Script" path="res://src/characters/player/states/death_state.gd" id="7_p6jiq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6wnf"]
-size = Vector2(31, 43)
+size = Vector2(15, 21)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 7
@@ -17,6 +17,7 @@ motion_mode = 1
 script = ExtResource("1_nrqrt")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_bue6g")
 region_rect = Rect2(0, 0, 48, 32)
 
@@ -26,7 +27,6 @@ shape = SubResource("RectangleShape2D_d6wnf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2(0.4, 0.4)
 
 [node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("3_f1tag")
