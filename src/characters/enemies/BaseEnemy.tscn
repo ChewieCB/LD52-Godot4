@@ -1,0 +1,121 @@
+[gd_scene load_steps=13 format=3 uid="uid://cs4u6rgsu7gds"]
+
+[ext_resource type="Script" path="res://src/characters/enemies/base_enemy.gd" id="1_85kf1"]
+[ext_resource type="Texture2D" uid="uid://cgdhkvbmdb4t5" path="res://assets/characters/enemy_melee_temp.png" id="1_n0agb"]
+[ext_resource type="Script" path="res://src/utils/state_machine/state_manager.gd" id="3_guvyg"]
+[ext_resource type="Script" path="res://src/characters/enemies/states/ai_move_state.gd" id="4_bp7av"]
+[ext_resource type="Script" path="res://src/characters/enemies/states/idle_state.gd" id="5_3y0yx"]
+[ext_resource type="Script" path="res://src/characters/enemies/states/follow_state.gd" id="6_mksb5"]
+[ext_resource type="Script" path="res://src/characters/enemies/states/chase_state.gd" id="6_ti6pu"]
+[ext_resource type="Script" path="res://src/characters/enemies/states/search_state.gd" id="8_psnr6"]
+[ext_resource type="Script" path="res://src/characters/enemies/states/return_state.gd" id="9_jor3s"]
+[ext_resource type="Script" path="res://src/characters/enemies/states/attack_state.gd" id="10_g7cen"]
+[ext_resource type="Script" path="res://src/characters/enemies/view_cone.gd" id="11_8eg5v"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bdcfo"]
+size = Vector2(41, 47)
+
+[node name="BaseEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 15
+motion_mode = 1
+safe_margin = 0.5
+script = ExtResource("1_85kf1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_n0agb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
+shape = SubResource("RectangleShape2D_bdcfo")
+
+[node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
+script = ExtResource("3_guvyg")
+starting_state = NodePath("MoveState/IdleState")
+
+[node name="MoveState" type="Node" parent="StateManager" node_paths=PackedStringArray("follow_state", "chase_state", "search_state", "return_state", "attack_state", "idle_state")]
+script = ExtResource("4_bp7av")
+follow_state = NodePath("FollowState")
+chase_state = NodePath("ChaseState")
+search_state = NodePath("SearchState")
+return_state = NodePath("ReturnState")
+attack_state = NodePath("../AttackState")
+move_speed = 350.0
+max_speed = 420.0
+idle_state = NodePath("IdleState")
+
+[node name="IdleState" type="Node" parent="StateManager/MoveState" node_paths=PackedStringArray("follow_state", "chase_state", "search_state", "return_state", "attack_state", "idle_state")]
+script = ExtResource("5_3y0yx")
+follow_state = NodePath("../FollowState")
+chase_state = NodePath("../ChaseState")
+search_state = NodePath("../SearchState")
+return_state = NodePath("../ReturnState")
+attack_state = NodePath("../../AttackState")
+idle_state = NodePath(".")
+
+[node name="FollowState" type="Node" parent="StateManager/MoveState" node_paths=PackedStringArray("follow_state", "chase_state", "search_state", "return_state", "attack_state", "idle_state")]
+script = ExtResource("6_mksb5")
+follow_state = NodePath(".")
+chase_state = NodePath("../ChaseState")
+search_state = NodePath("../SearchState")
+return_state = NodePath("../ReturnState")
+attack_state = NodePath("../../AttackState")
+idle_state = NodePath("../IdleState")
+
+[node name="ChaseState" type="Node" parent="StateManager/MoveState" node_paths=PackedStringArray("follow_state", "chase_state", "search_state", "return_state", "attack_state", "idle_state")]
+script = ExtResource("6_ti6pu")
+follow_state = NodePath("../FollowState")
+chase_state = NodePath(".")
+search_state = NodePath("../SearchState")
+return_state = NodePath("../ReturnState")
+attack_state = NodePath("../../AttackState")
+idle_state = NodePath("../IdleState")
+
+[node name="SearchState" type="Node" parent="StateManager/MoveState" node_paths=PackedStringArray("follow_state", "chase_state", "search_state", "return_state", "attack_state", "idle_state")]
+script = ExtResource("8_psnr6")
+follow_state = NodePath("../FollowState")
+chase_state = NodePath("../ChaseState")
+search_state = NodePath(".")
+return_state = NodePath("../ReturnState")
+attack_state = NodePath("../../AttackState")
+idle_state = NodePath("../IdleState")
+
+[node name="ReturnState" type="Node" parent="StateManager/MoveState" node_paths=PackedStringArray("follow_state", "chase_state", "search_state", "return_state", "attack_state", "idle_state")]
+script = ExtResource("9_jor3s")
+follow_state = NodePath("../FollowState")
+chase_state = NodePath("../ChaseState")
+search_state = NodePath("../SearchState")
+return_state = NodePath(".")
+attack_state = NodePath("../../AttackState")
+idle_state = NodePath("../IdleState")
+
+[node name="AttackState" type="Node" parent="StateManager" node_paths=PackedStringArray("move_state", "attack_state")]
+script = ExtResource("10_g7cen")
+move_state = NodePath("../MoveState")
+attack_state = NodePath(".")
+
+[node name="AttackDelayTimer" type="Timer" parent="StateManager/AttackState"]
+wait_time = 0.4
+
+[node name="ViewCone" type="Area2D" parent="."]
+script = ExtResource("11_8eg5v")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ViewCone"]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 16.0
+target_desired_distance = 48.0
+path_max_distance = 64.0
+avoidance_enabled = true
+radius = 48.0
+
+[node name="StateLabel" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = -24.0
+offset_top = -48.0
+offset_right = 23.0
+offset_bottom = -22.0
+text = "STATE"
+
+[connection signal="timeout" from="StateManager/AttackState/AttackDelayTimer" to="StateManager/AttackState" method="_on_attack_delay_timer_timeout"]
+[connection signal="body_exited" from="ViewCone" to="." method="_on_view_cone_body_exited"]

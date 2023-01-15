@@ -1,0 +1,10 @@
+res://src/levels/test/TestLevel.tscn
+res://src/utils/state_machine/state_manager.gd
+res://src/characters/enemies/base_enemy.gd
+res://src/characters/enemies/BaseEnemy.tscn
+res://src/characters/enemies/states/chase_state.gd
+res://src/characters/enemies/states/idle_state.gd
+res://src/characters/enemies/states/follow_state.gd
+res://src/characters/player/Player.tscn
+res://src/characters/enemies/states/return_state.gd
+res://src/characters/enemies/states/search_state.gd
