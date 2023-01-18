@@ -1,3 +1,4 @@
+@tool
 extends Area2D
 
 @export var detection_radius: float = 256

@@ -2,15 +2,13 @@ extends AIMoveState
 
 @export var acceleration: float = 2000
 
-var has_lost_player: bool = false
-
 
 func enter() -> void:
 	pass
 
 
 func physics_process(delta: float) -> BaseState:
-	if not actor.viewcone.overlaps_body(actor.player):
+	if not actor.target_node:
 		return search_state
 	
 	if actor.distance_to_target < 30:
@@ -29,3 +27,4 @@ func physics_process(delta: float) -> BaseState:
 		apply_movement()
 	
 	return null
+

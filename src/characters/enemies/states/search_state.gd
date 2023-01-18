@@ -16,8 +16,7 @@ func exit() -> void:
 
 
 func physics_process(delta: float) -> BaseState:
-	if actor.viewcone.overlaps_body(actor.player):
-		actor.target_node = actor.player
+	if actor.target_node:
 		return chase_state
 	
 	if actor._agent.is_navigation_finished():
@@ -47,3 +46,4 @@ func search() -> AIMoveState:
 	await get_tree().create_timer(2.0).timeout
 	
 	return return_state
+

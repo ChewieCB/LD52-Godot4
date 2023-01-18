@@ -8,8 +8,7 @@ func enter() -> void:
 
 
 func physics_process(delta: float) -> BaseState:
-	if actor.viewcone.overlaps_body(actor.player):
-		actor.target_node = actor.player
+	if actor.target_node:
 		return chase_state
 	
 	if actor.is_following:
@@ -19,3 +18,4 @@ func physics_process(delta: float) -> BaseState:
 	apply_movement()
 	
 	return null
+

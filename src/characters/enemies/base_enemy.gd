@@ -30,17 +30,17 @@ func _ready() -> void:
 		last_seen_player = target
 
 
-#func _draw() -> void:
-#	if target:
-#		draw_circle(to_local(target), 8.0, Color.RED)
+func _draw() -> void:
+	if target:
+		draw_circle(to_local(target), 8.0, Color.RED)
 #		if nav_path:
 #			for idx in range(nav_path.size() - 2):
 #				if idx == 0:
 #					draw_line(position, to_local(nav_path[idx]), Color.RED, 2.0)
 #				else:
 #					draw_line(to_local(nav_path[idx-1]), to_local(nav_path[idx]), Color.RED, 2.0)
-#	if last_seen_player:
-#		draw_circle(to_local(last_seen_player), 8.0, Color.PURPLE)
+	if last_seen_player:
+		draw_circle(to_local(last_seen_player), 8.0, Color.PURPLE)
 
 
 func _process(_delta: float) -> void:
@@ -86,3 +86,9 @@ func _on_view_cone_body_exited(body):
 		# Move the closest point a bit closer to the enemy to keep it in bounds
 		exit_position += exit_position.direction_to(global_position) * 8
 		last_seen_player = exit_position
+		target_node = null
+
+
+func _on_view_cone_body_entered(body):
+	if body is Player:
+		target_node = body

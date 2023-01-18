@@ -23,8 +23,7 @@ func enter() -> void:
 
 
 func physics_process(delta: float) -> BaseState:
-	if actor.viewcone.overlaps_body(actor.player):
-		actor.target_node = actor.player
+	if actor.target_node:
 		return chase_state
 	
 	if actor._agent.is_navigation_finished():
@@ -32,7 +31,7 @@ func physics_process(delta: float) -> BaseState:
 			path_index = 0
 		else:
 			path_index += 1
-		print(actor.name, " : ", path_index)
+#		print(actor.name, " : ", path_index)
 		actor.target = path_points[path_index]
 	else:
 		var direction := actor.global_position.direction_to(actor.next_location)
