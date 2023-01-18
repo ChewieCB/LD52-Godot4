@@ -1,7 +1,11 @@
-TileMap
+NavigationRegion2D
 Path2D
 Node2D
-NavigationRegion2D
+ColorRect
+LightOccluder2D
+PointLight2D
+CanvasModulate
+TileMap
 NavigationLink2D
 Timer
 Label

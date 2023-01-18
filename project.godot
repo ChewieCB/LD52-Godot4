@@ -63,7 +63,7 @@ _global_script_class_icons={
 [application]
 
 config/name="LD52"
-run/main_scene="res://src/levels/test/TestLevel.tscn"
+run/main_scene="res://src/levels/test/TestTileMap.tscn"
 config/features=PackedStringArray("4.0", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -75,6 +75,7 @@ Helper="*res://src/utils/scripts/helper.gd"
 
 window/size/viewport_width=640
 window/size/viewport_height=480
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [input]

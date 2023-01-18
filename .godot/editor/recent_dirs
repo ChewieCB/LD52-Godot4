@@ -1,5 +1,5 @@
-res://assets/environment/tiles
 res://src/levels/test
+res://assets/environment/tiles
 res://src/characters/enemies/states
 res://src/utils/state_machine
 res://src/characters/player/states
