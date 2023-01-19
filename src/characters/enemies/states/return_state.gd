@@ -31,13 +31,12 @@ func physics_process(delta: float) -> BaseState:
 	if actor._agent.is_navigation_finished():
 		return idle_state
 	
-	if actor.viewcone.overlaps_body(actor.player):
-		actor.target_node = actor.player
+	if actor.target_node:
 		return chase_state
 	
 	var direction := actor.global_position.direction_to(actor.next_location)
 	actor.global_rotation = direction.angle()
-	var desired_velocity := direction * 150.0
+	var desired_velocity := direction * 75.0
 	var steering := (desired_velocity - actor.velocity) * delta * 4.0
 	apply_acceleration(steering)
 	apply_movement()

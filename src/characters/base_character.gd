@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var states = $StateManager
 @onready var state_label = $StateLabel
 
+var move_modifier: float = 1.0
 var is_dead: bool = false
 
 
@@ -25,5 +26,6 @@ func _process(delta: float) -> void:
 
 func death() -> void:
 	is_dead = true
+	$ViewLight.visible = false
 	# Disable collision for corpses
 	self.set_collision_layer_value(1, false)

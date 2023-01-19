@@ -1,6 +1,7 @@
+@tool
 extends Area2D
 
-@export var detection_radius: float = 512
+@export var detection_radius: float = 256
 @export var view_angle: int: 
 	set(val):
 		view_angle = val
@@ -8,7 +9,7 @@ extends Area2D
 
 @onready var actor = get_parent()
 
-var cell_size = Vector2(32, 32)
+var cell_size = Vector2(16, 16)
 var space_state
 
 var view_cone_points: 
@@ -22,10 +23,10 @@ var view_cone
 var draw_colour = Color.GREEN
 
 
-func _draw() -> void:
-	if view_cone_points:
-		draw_colour.a = 0.4
-		draw_polygon(view_cone_points, Array([draw_colour]))
+#func _draw() -> void:
+#	if view_cone_points:
+#		draw_colour.a = 0.4
+#		draw_polygon(view_cone_points, Array([draw_colour]))
 
 
 func _process(_delta) -> void:
@@ -34,7 +35,7 @@ func _process(_delta) -> void:
 
 func _physics_process(delta) -> void:
 	space_state = get_world_2d().direct_space_state
-	view_cone = gen_circle_arc_poly(cell_size/2 + Vector2(-32, -18), detection_radius, view_angle - FOV/2, view_angle + FOV/2)
+	view_cone = gen_circle_arc_poly(cell_size/2 + Vector2(-16, -9), detection_radius, view_angle - FOV/2, view_angle + FOV/2)
 	view_cone_points = view_cone[0]
 	view_cone_points_colors = view_cone[1]
 

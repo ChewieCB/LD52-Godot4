@@ -1,8 +1,8 @@
 class_name MoveState
 extends BaseState
 
-@export var move_speed: float = 250
-@export var max_speed: float = 320
+@export var move_speed: float = 125
+@export var max_speed: float = 160
 
 @export var idle_state: MoveState
 @export var walk_state: MoveState
@@ -43,5 +43,6 @@ func apply_acceleration(acceleration: Vector2) -> void:
 
 
 func apply_movement() -> void:
+	actor.velocity *= actor.move_modifier
 	actor.move_and_slide()
 	actor.look_at(actor.get_global_mouse_position())

@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://byol1svprhp55"]
+[gd_scene load_steps=11 format=3 uid="uid://byol1svprhp55"]
 
 [ext_resource type="Texture2D" uid="uid://sh4yhtwa8ba" path="res://assets/characters/player_temp.png" id="1_bue6g"]
 [ext_resource type="Script" path="res://src/characters/player/player.gd" id="1_nrqrt"]
+[ext_resource type="Texture2D" uid="uid://dclu43qoi5s4t" path="res://assets/characters/player_light_ref_2.png" id="2_4ldox"]
+[ext_resource type="Texture2D" uid="uid://b625abpl18xs1" path="res://assets/characters/player_light_alt.png" id="2_21jih"]
 [ext_resource type="Script" path="res://src/utils/state_machine/states/move_state.gd" id="3_dl3ym"]
 [ext_resource type="Script" path="res://src/utils/state_machine/state_manager.gd" id="3_f1tag"]
 [ext_resource type="Script" path="res://src/characters/player/states/idle_state.gd" id="4_yo3vx"]
@@ -9,14 +11,31 @@
 [ext_resource type="Script" path="res://src/characters/player/states/death_state.gd" id="7_p6jiq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6wnf"]
-size = Vector2(31, 43)
+size = Vector2(15, 21)
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_nrqrt")
 
+[node name="PlayerLight" type="PointLight2D" parent="."]
+z_index = 1
+energy = 0.75
+blend_mode = 2
+range_item_cull_mask = 3
+shadow_enabled = true
+texture = ExtResource("2_21jih")
+texture_scale = 0.75
+
+[node name="ViewLight" type="PointLight2D" parent="."]
+blend_mode = 2
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = ExtResource("2_4ldox")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_bue6g")
 region_rect = Rect2(0, 0, 48, 32)
 
@@ -26,7 +45,6 @@ shape = SubResource("RectangleShape2D_d6wnf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2(0.4, 0.4)
 
 [node name="StateManager" type="Node" parent="." node_paths=PackedStringArray("starting_state")]
 script = ExtResource("3_f1tag")

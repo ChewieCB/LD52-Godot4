@@ -1,6 +1,6 @@
 extends MoveState
 
-@export var acceleration: float = 2000
+@export var acceleration: float = 1000
 
 
 func enter() -> void:
