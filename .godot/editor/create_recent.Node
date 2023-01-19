@@ -1,9 +1,10 @@
+NavigationRegion2D
+ColorRect
+CanvasLayer
 LightOccluder2D
 PointLight2D
-NavigationRegion2D
 Path2D
 Node2D
-ColorRect
 CanvasModulate
 TileMap
 NavigationLink2D

@@ -76,7 +76,7 @@ Helper="*res://src/utils/scripts/helper.gd"
 window/size/viewport_width=640
 window/size/viewport_height=480
 window/size/mode=2
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 
 [input]
 
@@ -123,3 +123,4 @@ quit={
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)

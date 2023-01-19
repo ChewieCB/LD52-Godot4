@@ -26,5 +26,6 @@ func _process(delta: float) -> void:
 
 func death() -> void:
 	is_dead = true
+	$ViewLight.visible = false
 	# Disable collision for corpses
 	self.set_collision_layer_value(1, false)
