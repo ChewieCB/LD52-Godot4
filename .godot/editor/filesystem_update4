@@ -11,3 +11,6 @@ res://src/characters/enemies/states/chase_state.gd
 res://src/characters/enemies/base_enemy.gd
 res://src/characters/enemies/states/follow_state.gd
 res://src/characters/enemies/states/return_state.gd
+res://src/characters/player/player.gd
+res://src/utils/state_machine/states/move_state.gd
+res://src/characters/base_character.gd

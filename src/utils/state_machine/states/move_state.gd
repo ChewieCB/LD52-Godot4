@@ -43,5 +43,6 @@ func apply_acceleration(acceleration: Vector2) -> void:
 
 
 func apply_movement() -> void:
+	actor.velocity *= actor.move_modifier
 	actor.move_and_slide()
 	actor.look_at(actor.get_global_mouse_position())

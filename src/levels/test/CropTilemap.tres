@@ -1,9 +1,11 @@
-[gd_resource type="TileSet" load_steps=12 format=3 uid="uid://c8nwsnt1jsfq2"]
+[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://c8nwsnt1jsfq2"]
 
 [ext_resource type="Texture2D" uid="uid://jtlw0pnh8fnh" path="res://assets/environment/tiles/crop_tile.png" id="1_dgybo"]
 [ext_resource type="Texture2D" uid="uid://bawio88skpsrs" path="res://assets/environment/tiles/GroundTemplate.png" id="1_h7ra0"]
 [ext_resource type="Texture2D" uid="uid://bq0lfb0684342" path="res://assets/environment/tiles/barrier_tile.png" id="3_1glxj"]
 [ext_resource type="Texture2D" uid="uid://co1b4ojk4506i" path="res://assets/environment/tiles/indoor_floor_tile.png" id="4_hc4m5"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_1b8on"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_t7m0f"]
 texture = ExtResource("1_dgybo")
@@ -11,6 +13,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/terrain_set = 0
 0:0/0/terrain = 0
+0:0/0/occlusion_layer_1/polygon = SubResource("OccluderPolygon2D_1b8on")
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -24,6 +27,7 @@ texture_region_size = Vector2i(32, 32)
 0:0/0/terrains_peering_bit/top_left_corner = 0
 0:0/0/terrains_peering_bit/top_side = 0
 0:0/0/terrains_peering_bit/top_right_corner = 0
+0:0/0/custom_data_0 = true
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_ncii5"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -924,24 +928,27 @@ texture_region_size = Vector2i(32, 32)
 8:7/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 8:7/0/physics_layer_1/angular_velocity = 0.0
 
-[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_rcgx7"]
-polygon = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_m0x5t"]
+polygon = PackedVector2Array(-16, -16, -16, 16, 16, 16, 16, -16)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qmac1"]
 texture = ExtResource("3_1glxj")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_rcgx7")
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_m0x5t")
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_1/angular_velocity = 0.0
 0:0/0/physics_layer_1/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b84bq"]
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_40s6g"]
 texture = ExtResource("4_hc4m5")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_b84bq")
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
@@ -949,7 +956,8 @@ texture_region_size = Vector2i(32, 32)
 
 [resource]
 tile_size = Vector2i(32, 32)
-occlusion_layer_0/light_mask = 1
+occlusion_layer_0/light_mask = 3
+occlusion_layer_1/light_mask = 1
 physics_layer_0/collision_layer = 8
 physics_layer_0/collision_mask = 4
 physics_layer_1/collision_layer = 2
@@ -958,6 +966,8 @@ terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Crops"
 terrain_set_0/terrain_0/color = Color(0.152941, 0.415686, 0.533333, 1)
 navigation_layer_0/layers = 0
+custom_data_layer_0/name = "is_crop"
+custom_data_layer_0/type = 1
 sources/1 = SubResource("TileSetAtlasSource_22ik1")
 sources/0 = SubResource("TileSetAtlasSource_t7m0f")
 sources/2 = SubResource("TileSetAtlasSource_qmac1")

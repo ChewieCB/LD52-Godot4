@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://sh4yhtwa8ba" path="res://assets/characters/player_temp.png" id="1_bue6g"]
 [ext_resource type="Script" path="res://src/characters/player/player.gd" id="1_nrqrt"]
-[ext_resource type="Texture2D" uid="uid://biv3cl470xaui" path="res://assets/characters/player_light_ref_no_rear.png" id="2_jy525"]
+[ext_resource type="Texture2D" uid="uid://dclu43qoi5s4t" path="res://assets/characters/player_light_ref_2.png" id="2_4ldox"]
 [ext_resource type="Script" path="res://src/utils/state_machine/states/move_state.gd" id="3_dl3ym"]
 [ext_resource type="Script" path="res://src/utils/state_machine/state_manager.gd" id="3_f1tag"]
 [ext_resource type="Texture2D" uid="uid://c1vt6iqxu0mtj" path="res://assets/characters/player_light.png" id="3_o1upc"]
@@ -18,18 +18,20 @@ collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_nrqrt")
 
-[node name="ViewCone" type="PointLight2D" parent="."]
-visible = false
-position = Vector2(222, 0)
-shadow_enabled = true
-texture = ExtResource("2_jy525")
-
 [node name="PlayerLight" type="PointLight2D" parent="."]
-visible = false
-energy = 3.0
+z_index = 1
+blend_mode = 2
+range_item_cull_mask = 3
 shadow_enabled = true
 texture = ExtResource("3_o1upc")
-texture_scale = 0.45
+texture_scale = 0.75
+
+[node name="ViewCone" type="PointLight2D" parent="."]
+blend_mode = 2
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_item_cull_mask = 3
+texture = ExtResource("2_4ldox")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)

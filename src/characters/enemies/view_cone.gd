@@ -23,10 +23,10 @@ var view_cone
 var draw_colour = Color.GREEN
 
 
-func _draw() -> void:
-	if view_cone_points:
-		draw_colour.a = 0.4
-		draw_polygon(view_cone_points, Array([draw_colour]))
+#func _draw() -> void:
+#	if view_cone_points:
+#		draw_colour.a = 0.4
+#		draw_polygon(view_cone_points, Array([draw_colour]))
 
 
 func _process(_delta) -> void:
