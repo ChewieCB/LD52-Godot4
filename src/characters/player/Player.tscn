@@ -19,19 +19,24 @@ motion_mode = 1
 script = ExtResource("1_nrqrt")
 
 [node name="PlayerLight" type="PointLight2D" parent="."]
+light_mask = 9
 z_index = 1
+color = Color(0.772549, 0.615686, 0.333333, 1)
 energy = 0.75
 blend_mode = 2
-range_item_cull_mask = 3
+range_item_cull_mask = 7
 shadow_enabled = true
+shadow_item_cull_mask = 2
 texture = ExtResource("2_21jih")
 texture_scale = 0.75
 
 [node name="ViewLight" type="PointLight2D" parent="."]
+light_mask = 9
+color = Color(0.772549, 0.615686, 0.333333, 1)
 blend_mode = 2
 range_item_cull_mask = 3
 shadow_enabled = true
-shadow_item_cull_mask = 3
+shadow_item_cull_mask = 7
 texture = ExtResource("2_4ldox")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -16,7 +16,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bdcfo"]
 size = Vector2(20, 23)
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_84sjp"]
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_xyq0w"]
 points = PackedVector2Array(-8, -1, 188.107, -165.554, 193.731, -158.609, 201.703, -147.836, 206.7, -140.428, 213.702, -129, 218.035, -121.185, 224.015, -109.19, 227.649, -101.027, 232.561, -88.5572, 235.47, -80.1084, 239.277, -67.2577, 241.439, -58.5875, 244.111, -45.4539, 245.509, -36.6283, 247.026, -23.3119, 247.649, -14.398, 248, -1, 247.844, 7.93427, 247.026, 21.3119, 246.092, 30.1986, 244.111, 43.4539, 242.406, 52.2254, 239.277, 65.2577, 236.814, 73.8472, 232.561, 86.5572, 229.359, 94.8993, 224.015, 107.19, 220.098, 115.222, 213.702, 127, 209.1, 134.659, 201.703, 145.836, 196.451, 153.065, 188.107, 163.554)
 
 [node name="BaseEnemy" type="CharacterBody2D"]
@@ -28,10 +28,11 @@ script = ExtResource("1_85kf1")
 
 [node name="ViewLight" type="PointLight2D" parent="."]
 position = Vector2(111, 0)
-color = Color(0.772549, 0.615686, 0.333333, 1)
+color = Color(0.866667, 0.443137, 0.231373, 1)
+blend_mode = 2
 range_item_cull_mask = 3
 shadow_enabled = true
-shadow_item_cull_mask = 3
+shadow_item_cull_mask = 7
 texture = ExtResource("2_k35c3")
 texture_scale = 0.5
 
@@ -116,12 +117,12 @@ script = ExtResource("11_8eg5v")
 view_angle = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ViewCone"]
-shape = SubResource("ConvexPolygonShape2D_84sjp")
+shape = SubResource("ConvexPolygonShape2D_xyq0w")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 16.0
+path_desired_distance = 32.0
 target_desired_distance = 24.0
-path_max_distance = 32.0
+path_max_distance = 64.0
 avoidance_enabled = true
 radius = 48.0
 neighbor_distance = 250.0

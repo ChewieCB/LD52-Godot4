@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgn58obcy62d6"]
+
+[ext_resource type="Script" path="res://src/characters/enemies/view_cone.gd" id="1_7pte6"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ipt86"]
+points = PackedVector2Array(-8, -1, 188.107, -165.554, 193.731, -158.609, 201.703, -147.836, 206.7, -140.428, 213.702, -129, 218.035, -121.185, 224.015, -109.19, 227.649, -101.027, 232.561, -88.5572, 235.47, -80.1084, 239.277, -67.2577, 241.439, -58.5875, 244.111, -45.4539, 245.509, -36.6283, 247.026, -23.3119, 247.649, -14.398, 248, -1, 247.844, 7.93427, 247.026, 21.3119, 246.092, 30.1986, 244.111, 43.4539, 242.406, 52.2254, 239.277, 65.2577, 236.814, 73.8472, 232.561, 86.5572, 229.359, 94.8993, 224.015, 107.19, 220.098, 115.222, 213.702, 127, 209.1, 134.659, 201.703, 145.836, 196.451, 153.065, 188.107, 163.554)
+
+[node name="ViewCone" type="Area2D"]
+script = ExtResource("1_7pte6")
+view_angle = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("ConvexPolygonShape2D_ipt86")
