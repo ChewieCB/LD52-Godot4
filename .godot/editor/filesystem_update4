@@ -3,3 +3,14 @@ res://src/utils/state_machine/state_manager.gd
 res://src/levels/test/01/level_01.tscn
 res://src/characters/enemies/BaseEnemy.tscn
 res://src/characters/enemies/base_enemy.gd
+res://src/ui/UI.tscn
+res://src/characters/player/player.gd
+res://src/ui/ui.gd
+res://src/throwables/Throwable.tscn
+res://src/throwables/throwable.gd
+res://src/throwables/NoiseEmitter.tscn
+res://src/throwables/noise_emitter.gd
+res://src/characters/player/states/death_state.gd
+res://src/characters/player/states/idle_state.gd
+res://src/characters/enemies/states/idle_state.gd
+res://src/characters/enemies/states/chase_state.gd

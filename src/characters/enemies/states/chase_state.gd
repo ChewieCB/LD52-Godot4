@@ -8,14 +8,14 @@ func enter() -> void:
 
 
 func physics_process(delta: float) -> BaseState:
-	if not actor.target_node:
+	if actor.target == Vector2.ZERO:
 		return search_state
 	
-	if actor.distance_to_target < 30:
+	if actor.distance_to_target < 30 and actor.target_node:
 		return attack_state
 	
 	if not actor.can_chase or \
-	not actor.target_node or \
+	actor.target == Vector2.ZERO or \
 	(actor.target_node and actor.target_node.is_dead):
 		return return_state
 	else:

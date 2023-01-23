@@ -7,7 +7,7 @@ func enter() -> void:
 	super.enter()
 
 
-func physics_process(delta: float) -> BaseState:
+func physics_process(_delta: float) -> BaseState:
 	if actor.is_dead:
 		return death_state
 	

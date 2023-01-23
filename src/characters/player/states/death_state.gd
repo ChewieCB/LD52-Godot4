@@ -5,6 +5,6 @@ func enter() -> void:
 	pass
 
 
-func physics_process(delta: float) -> BaseState:
+func physics_process(_delta: float) -> BaseState:
 
 	return null

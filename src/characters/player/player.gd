@@ -2,12 +2,36 @@ class_name Player
 extends BaseCharacter
 
 @onready @export var tilemap: TileMap
+@onready var ui = $UILayer/UI
+@onready var crosshair = $Aim
+
+var noise = preload("res://src/throwables/NoiseEmitter.tscn")
 
 var is_torch_enabled = true:
 	set(val):
 		is_torch_enabled = val
 		$ViewLight.visible = is_torch_enabled
 
+var has_throwable = false:
+	set(val):
+		has_throwable = val
+		crosshair.visible = has_throwable
+		ui.has_throwable = has_throwable
+
+
+#func _ready():
+#	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			if has_throwable:
+				# Spawn an emitter at the mouse position
+				var noise_instance = noise.instantiate()
+				get_parent().add_child(noise_instance)
+				noise_instance.global_position = get_global_mouse_position()
+				has_throwable = false
 
 func _physics_process(delta: float) -> void:
 	# Debug reset/quit inputs
@@ -15,6 +39,8 @@ func _physics_process(delta: float) -> void:
 		var _ret = get_tree().reload_current_scene()
 	elif Input.is_action_pressed("quit"):
 		get_tree().quit()
+	
+	crosshair.global_position = get_global_mouse_position()
 	
 	states.physics_process(delta)
 	

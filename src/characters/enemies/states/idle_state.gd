@@ -8,7 +8,7 @@ func enter() -> void:
 
 
 func physics_process(delta: float) -> BaseState:
-	if actor.target_node:
+	if actor.target_node or actor.target:
 		return chase_state
 	
 	if actor.is_following:
