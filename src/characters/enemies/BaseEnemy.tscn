@@ -1,10 +1,15 @@
-[gd_scene load_steps=15 format=3 uid="uid://cs4u6rgsu7gds"]
+[gd_scene load_steps=20 format=3 uid="uid://cs4u6rgsu7gds"]
 
 [ext_resource type="Script" path="res://src/characters/enemies/base_enemy.gd" id="1_85kf1"]
 [ext_resource type="Texture2D" uid="uid://cgdhkvbmdb4t5" path="res://assets/characters/enemy_melee_temp.png" id="1_n0agb"]
 [ext_resource type="Texture2D" uid="uid://5curs4u07t1g" path="res://assets/characters/player_light_ref_no_rear_tall.png" id="2_k35c3"]
+[ext_resource type="Texture2D" uid="uid://c2xpqch46vx1u" path="res://assets/characters/enemy/enemy_head_1.png" id="2_om4yc"]
+[ext_resource type="Texture2D" uid="uid://cb5d1qr6dbggw" path="res://assets/characters/enemy/enemy_head_2.png" id="3_0qanh"]
+[ext_resource type="Texture2D" uid="uid://1auou1kox6q3" path="res://assets/characters/player/player_feet.png" id="3_7ki4u"]
 [ext_resource type="Script" path="res://src/utils/state_machine/state_manager.gd" id="3_guvyg"]
+[ext_resource type="Texture2D" uid="uid://dikqtgrssa33l" path="res://assets/characters/enemy/enemy_head_3.png" id="4_7ir42"]
 [ext_resource type="Script" path="res://src/characters/enemies/states/ai_move_state.gd" id="4_bp7av"]
+[ext_resource type="Texture2D" uid="uid://ch0am1mmug42u" path="res://assets/characters/enemy/enemy_body_knife.png" id="4_pi84m"]
 [ext_resource type="Script" path="res://src/characters/enemies/states/idle_state.gd" id="5_3y0yx"]
 [ext_resource type="Script" path="res://src/characters/enemies/states/follow_state.gd" id="6_mksb5"]
 [ext_resource type="Script" path="res://src/characters/enemies/states/chase_state.gd" id="6_ti6pu"]
@@ -25,6 +30,7 @@ collision_mask = 15
 motion_mode = 1
 safe_margin = 0.5
 script = ExtResource("1_85kf1")
+head_sprites = [ExtResource("2_om4yc"), ExtResource("3_0qanh"), ExtResource("4_7ir42")]
 
 [node name="ViewLight" type="PointLight2D" parent="."]
 position = Vector2(111, 0)
@@ -36,7 +42,20 @@ shadow_item_cull_mask = 7
 texture = ExtResource("2_k35c3")
 texture_scale = 0.5
 
+[node name="Sprite" type="Node2D" parent="."]
+rotation = 1.5708
+
+[node name="Feet" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("3_7ki4u")
+
+[node name="Body" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("4_pi84m")
+
+[node name="Head" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("3_7ki4u")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_n0agb")
 

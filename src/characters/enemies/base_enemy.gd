@@ -1,6 +1,8 @@
 class_name BaseEnemy
 extends BaseCharacter
 
+@export var head_sprites: Array[Texture2D]
+
 @export @onready var player: Player
 @export @onready var target_node: Node
 @export @onready var follow_path: Path2D
@@ -23,6 +25,11 @@ var last_seen_player: Vector2
 
 func _ready() -> void:
 	super._ready()
+	if head_sprites:
+		var random = RandomNumberGenerator.new()
+		random.randomize()
+		var head_index = random.randi_range(0, head_sprites.size() - 1)
+		$Sprite/Head.texture = head_sprites[head_index]
 	if target_node:
 		target = target_node.global_position
 	if target:

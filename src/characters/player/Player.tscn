@@ -1,13 +1,15 @@
-[gd_scene load_steps=11 format=3 uid="uid://byol1svprhp55"]
+[gd_scene load_steps=13 format=3 uid="uid://byol1svprhp55"]
 
-[ext_resource type="Texture2D" uid="uid://sh4yhtwa8ba" path="res://assets/characters/player_temp.png" id="1_bue6g"]
 [ext_resource type="Script" path="res://src/characters/player/player.gd" id="1_nrqrt"]
 [ext_resource type="Texture2D" uid="uid://dclu43qoi5s4t" path="res://assets/characters/player_light_ref_2.png" id="2_4ldox"]
 [ext_resource type="Texture2D" uid="uid://b625abpl18xs1" path="res://assets/characters/player_light_alt.png" id="2_21jih"]
 [ext_resource type="Script" path="res://src/utils/state_machine/states/move_state.gd" id="3_dl3ym"]
 [ext_resource type="Script" path="res://src/utils/state_machine/state_manager.gd" id="3_f1tag"]
+[ext_resource type="Texture2D" uid="uid://1auou1kox6q3" path="res://assets/characters/player/player_feet.png" id="4_umlvu"]
 [ext_resource type="Script" path="res://src/characters/player/states/idle_state.gd" id="4_yo3vx"]
+[ext_resource type="Texture2D" uid="uid://dhadpt7mb7b4r" path="res://assets/characters/player/player_body.png" id="5_2p0fa"]
 [ext_resource type="Script" path="res://src/characters/player/states/walk_state.gd" id="5_6avw1"]
+[ext_resource type="Texture2D" uid="uid://clqol57nexkv2" path="res://assets/characters/player/player_head.png" id="6_jxrsh"]
 [ext_resource type="Script" path="res://src/characters/player/states/death_state.gd" id="7_p6jiq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6wnf"]
@@ -39,10 +41,17 @@ shadow_enabled = true
 shadow_item_cull_mask = 7
 texture = ExtResource("2_4ldox")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_bue6g")
-region_rect = Rect2(0, 0, 48, 32)
+[node name="Sprite" type="Node2D" parent="."]
+rotation = 1.5708
+
+[node name="Feet" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("4_umlvu")
+
+[node name="Body" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("5_2p0fa")
+
+[node name="Head" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("6_jxrsh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)
