@@ -128,6 +128,7 @@ radius = 48.0
 neighbor_distance = 250.0
 
 [node name="StateLabel" type="Label" parent="."]
+visible = false
 modulate = Color(0, 0, 0, 1)
 offset_left = -24.0
 offset_top = -48.0
