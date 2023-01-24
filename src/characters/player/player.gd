@@ -5,7 +5,7 @@ extends BaseCharacter
 @onready var ui = $UILayer/UI
 @onready var crosshair = $Aim
 
-var noise = preload("res://src/throwables/NoiseEmitter.tscn")
+var bottle = preload("res://src/throwables/Bottle.tscn")
 
 var is_torch_enabled = true:
 	set(val):
@@ -27,10 +27,11 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if has_throwable:
-				# Spawn an emitter at the mouse position
-				var noise_instance = noise.instantiate()
-				get_parent().add_child(noise_instance)
-				noise_instance.global_position = get_global_mouse_position()
+				# Spawn a bottle
+				var bottle_instance = bottle.instantiate()
+				bottle_instance.global_position = global_position
+				bottle_instance.target = crosshair.global_position
+				get_parent().add_child(bottle_instance)
 				has_throwable = false
 
 func _physics_process(delta: float) -> void:

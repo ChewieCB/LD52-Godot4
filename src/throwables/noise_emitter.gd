@@ -11,16 +11,16 @@ func _ready():
 	timer.start()
 
 
-#func _draw():
-#	draw_circle(Vector2.ZERO, collider.shape.radius, Color(1, 1, 1, 0.5))
-#
-#
-#func _process(_delta):
-#	queue_redraw()
+func _draw():
+	draw_circle(Vector2.ZERO, collider.shape.radius, Color(1, 1, 1, 0.5))
+
+
+func _process(_delta):
+	queue_redraw()
 
 
 func _physics_process(delta):
-	collider.shape.radius += 700 * delta
+	collider.shape.radius += 1000 * delta
 
 
 func _on_area_2d_body_entered(body):

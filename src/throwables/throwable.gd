@@ -5,13 +5,15 @@ class_name Throwable
 @onready var popup = $Label
 
 var can_pick_up = false
+@export var infinite: bool = false
 
 
 func _input(event):
 	if event.is_action_released("interact"):
 		if can_pick_up and not player.has_throwable:
 			player.has_throwable = true
-#			self.queue_free()
+			if not infinite:
+				self.queue_free()
 
 
 func _on_area_2d_body_entered(body):
