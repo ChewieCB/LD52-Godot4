@@ -17,6 +17,7 @@ var has_throwable = false:
 		has_throwable = val
 		crosshair.visible = has_throwable
 		ui.has_throwable = has_throwable
+		$Sprite/Bottle.visible = has_throwable
 
 
 #func _ready():

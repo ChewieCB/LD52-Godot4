@@ -14,3 +14,4 @@ res://src/characters/player/player.gd
 res://src/characters/enemies/states/search_state.gd
 res://src/characters/enemies/states/chase_state.gd
 res://src/characters/enemies/base_enemy.gd
+res://src/levels/test/CropTilemap.tres

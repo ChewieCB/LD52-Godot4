@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://byol1svprhp55"]
+[gd_scene load_steps=16 format=3 uid="uid://byol1svprhp55"]
 
 [ext_resource type="Script" path="res://src/characters/player/player.gd" id="1_nrqrt"]
 [ext_resource type="Texture2D" uid="uid://dclu43qoi5s4t" path="res://assets/characters/player_light_ref_2.png" id="2_4ldox"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://src/characters/player/states/idle_state.gd" id="4_yo3vx"]
 [ext_resource type="Texture2D" uid="uid://dhadpt7mb7b4r" path="res://assets/characters/player/player_body.png" id="5_2p0fa"]
 [ext_resource type="Script" path="res://src/characters/player/states/walk_state.gd" id="5_6avw1"]
+[ext_resource type="Texture2D" uid="uid://c1wcd10a2xpm7" path="res://assets/environment/bottle.png" id="6_josfb"]
 [ext_resource type="Texture2D" uid="uid://clqol57nexkv2" path="res://assets/characters/player/player_head.png" id="6_jxrsh"]
 [ext_resource type="Script" path="res://src/characters/player/states/death_state.gd" id="7_p6jiq"]
 [ext_resource type="PackedScene" uid="uid://dpxly5gq5xjxu" path="res://src/ui/UI.tscn" id="12_e0r08"]
@@ -53,6 +54,12 @@ rotation = 1.5708
 
 [node name="Feet" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("4_umlvu")
+
+[node name="Bottle" type="Sprite2D" parent="Sprite"]
+visible = false
+position = Vector2(6.99998, -5.00002)
+rotation = 3.19677
+texture = ExtResource("6_josfb")
 
 [node name="Body" type="Sprite2D" parent="Sprite"]
 texture = ExtResource("5_2p0fa")
