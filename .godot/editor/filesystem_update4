@@ -11,3 +11,6 @@ res://src/levels/test/FarmTilemap.tscn
 res://src/throwables/Bottle.tscn
 res://src/throwables/bottle.gd
 res://src/characters/player/player.gd
+res://src/characters/enemies/states/search_state.gd
+res://src/characters/enemies/states/chase_state.gd
+res://src/characters/enemies/base_enemy.gd

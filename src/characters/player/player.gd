@@ -49,7 +49,7 @@ func _physics_process(delta: float) -> void:
 	if not is_dead:
 		var current_cell = tilemap.local_to_map(position)
 		var cell_data = tilemap.get_cell_tile_data(0, current_cell)
-		if cell_data.get_custom_data("is_crop"):
+		if cell_data and cell_data.get_custom_data("is_crop"):
 			is_torch_enabled = false
 			move_modifier = 0.80
 			$PlayerLight.texture_scale = 0.45

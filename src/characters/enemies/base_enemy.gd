@@ -40,6 +40,8 @@ func _ready() -> void:
 func _draw() -> void:
 	if target:
 		draw_circle(to_local(target), 8.0, Color.RED)
+		for point in _agent.get_current_navigation_path():
+			draw_circle(to_local(point), 2.0, Color.GREEN_YELLOW)
 	if last_seen_player:
 		draw_circle(to_local(last_seen_player), 8.0, Color.PURPLE)
 
@@ -85,7 +87,7 @@ func _on_view_cone_body_exited(body):
 			# Add the point where the ray collides
 			exit_position = result["position"]
 		# Move the closest point a bit closer to the enemy to keep it in bounds
-		exit_position += exit_position.direction_to(global_position) * 8
+		exit_position += exit_position.direction_to(global_position) * 32
 		last_seen_player = exit_position
 		target_node = null
 
