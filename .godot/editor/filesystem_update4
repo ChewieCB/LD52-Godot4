@@ -16,3 +16,4 @@ res://src/items/key/key.gd
 res://src/environment/gate/Gate.tscn
 res://src/environment/gate/gate.gd
 res://src/ui/ui.gd
+res://src/characters/enemies/view_cone.gd

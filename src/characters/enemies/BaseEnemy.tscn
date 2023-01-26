@@ -35,8 +35,7 @@ script = ExtResource("1_85kf1")
 head_sprites = [ExtResource("2_om4yc"), ExtResource("3_0qanh"), ExtResource("4_7ir42")]
 
 [node name="EnemyLight" type="PointLight2D" parent="."]
-color = Color(0.866667, 0.443137, 0.231373, 1)
-blend_mode = 2
+color = Color(0.803922, 0.407843, 0.239216, 1)
 range_item_cull_mask = 3
 shadow_enabled = true
 shadow_item_cull_mask = 7
@@ -45,8 +44,7 @@ texture_scale = 0.25
 
 [node name="ViewLight" type="PointLight2D" parent="."]
 position = Vector2(85, 0)
-color = Color(0.866667, 0.443137, 0.231373, 1)
-blend_mode = 2
+color = Color(0.803922, 0.407843, 0.239216, 1)
 range_item_cull_mask = 3
 shadow_enabled = true
 shadow_item_cull_mask = 7
