@@ -74,12 +74,10 @@ player = NodePath("../../Player")
 [node name="Throwable" parent="Throwables" node_paths=PackedStringArray("player") instance=ExtResource("4_x8rba")]
 position = Vector2(120, -112)
 player = NodePath("../../Player")
-infinite = true
 
 [node name="Throwable2" parent="Throwables" node_paths=PackedStringArray("player") instance=ExtResource("4_x8rba")]
 position = Vector2(120, -112)
 player = NodePath("../../Player")
-infinite = true
 
 [node name="Occluders" type="Node2D" parent="."]
 

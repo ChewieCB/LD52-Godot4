@@ -34,6 +34,16 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://src/utils/state_machine/base_state.gd"
 }, {
+"base": "StaticBody2D",
+"class": &"Gate",
+"language": &"GDScript",
+"path": "res://src/environment/gate/gate.gd"
+}, {
+"base": "Node2D",
+"class": &"Key",
+"language": &"GDScript",
+"path": "res://src/items/key/key.gd"
+}, {
 "base": "BaseState",
 "class": &"MoveState",
 "language": &"GDScript",
@@ -60,6 +70,8 @@ _global_script_class_icons={
 "BaseCharacter": "",
 "BaseEnemy": "",
 "BaseState": "",
+"Gate": "",
+"Key": "",
 "MoveState": "",
 "Player": "",
 "StateManager": "",
