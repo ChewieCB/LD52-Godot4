@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/throwables/noise_emitter.gd" id="1_ld44i"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_r8xnf"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_nfjik"]
 
 [node name="NoiseEmitter" type="Node2D"]
 script = ExtResource("1_ld44i")
@@ -13,7 +13,7 @@ collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 z_index = 10
-shape = SubResource("CircleShape2D_r8xnf")
+shape = SubResource("CircleShape2D_nfjik")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2

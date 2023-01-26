@@ -1,9 +1,14 @@
+AudioStreamPlayer2D
+AnimationPlayer
 CollisionShape2D
+CollisionPolygon2D
+Node2D
+AnimatedSprite2D
+AnimationTree
 Area2D
 Label
 Sprite2D
 StaticBody2D
-Node2D
 Path2D
 CharacterBody2D
 LightOccluder2D

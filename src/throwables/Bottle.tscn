@@ -1,9 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://yqoox3rnk0mh"]
+[gd_scene load_steps=7 format=3 uid="uid://yqoox3rnk0mh"]
 
 [ext_resource type="Script" path="res://src/throwables/bottle.gd" id="1_24sbf"]
 [ext_resource type="Texture2D" uid="uid://c1wcd10a2xpm7" path="res://assets/environment/bottle.png" id="1_nuow5"]
+[ext_resource type="AudioStream" uid="uid://bnxee4igxoanu" path="res://assets/audio/sfx/glass/glass_break_1.mp3" id="2_m2y7r"]
+[ext_resource type="AudioStream" uid="uid://bbpg3n7iyu6h8" path="res://assets/audio/sfx/glass/glass_break_2.mp3" id="3_2r2mc"]
+[ext_resource type="AudioStream" uid="uid://djgcl3vkc2k24" path="res://assets/audio/sfx/glass/glass_break_3.mp3" id="4_jlyb8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_img72"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rl0f"]
 size = Vector2(6, 14)
 
 [node name="Bottle" type="CharacterBody2D"]
@@ -12,9 +15,13 @@ collision_layer = 16
 collision_mask = 2
 motion_mode = 1
 script = ExtResource("1_24sbf")
+glass_sfx = [ExtResource("2_m2y7r"), ExtResource("3_2r2mc"), ExtResource("4_jlyb8")]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_nuow5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_img72")
+shape = SubResource("RectangleShape2D_1rl0f")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+autoplay = true

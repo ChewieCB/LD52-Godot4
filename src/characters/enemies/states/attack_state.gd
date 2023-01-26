@@ -31,6 +31,10 @@ func physics_process(delta: float) -> BaseState:
 
 func _on_attack_delay_timer_timeout():
 	if actor.target_node:
+		actor.animations.play("attack_hit")
 		actor.target_node.death()
+	else:
+		actor.animations.play("attack")
+	await actor.animations.animation_finished
 	timer_finished = true
 	

@@ -1,7 +1,7 @@
 class_name BaseCharacter
 extends CharacterBody2D
 
-#@onready var animations = $animations
+@onready var animations = $AnimationPlayer
 @onready var states = $StateManager
 @onready var state_label = $StateLabel
 

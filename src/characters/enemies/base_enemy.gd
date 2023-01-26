@@ -11,7 +11,9 @@ var target: Vector2
 @onready var _agent = $NavigationAgent2D
 @onready var initial_position := self.global_position
 @onready var initial_rotation := self.global_rotation
-@onready var viewcone = $ViewCone
+@onready var viewcone = $Pivot/ViewCone
+
+@onready var pivot = $Pivot
 
 var distance_to_target: float
 var next_location: Vector2
@@ -29,7 +31,7 @@ func _ready() -> void:
 		var random = RandomNumberGenerator.new()
 		random.randomize()
 		var head_index = random.randi_range(0, head_sprites.size() - 1)
-		$Sprite/Head.texture = head_sprites[head_index]
+		$Pivot/Sprite/Head.texture = head_sprites[head_index]
 	if target_node:
 		target = target_node.global_position
 	if target:
@@ -64,7 +66,7 @@ func _physics_process(delta: float) -> void:
 		nav_path = _agent.get_current_navigation_path()
 	
 	# If we're too close, stop trying to get closer
-#	if target_node and distance_to_target < 48:
+#	if target_node and distance_to_target < 4w8:
 #		return
 	
 	_agent.set_target_location(target)

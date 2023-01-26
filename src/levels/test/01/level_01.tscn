@@ -200,6 +200,7 @@ point_count = 9
 [node name="level_01" type="Node2D"]
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+visible = false
 color = Color(0, 0, 0, 0.823529)
 
 [node name="Occluders" type="Node2D" parent="."]
@@ -504,8 +505,7 @@ layer_1/tile_data = PackedInt32Array(-262141, 393218, 0, -524285, 458754, 2, -52
 
 [node name="Player" parent="." node_paths=PackedStringArray("tilemap") instance=ExtResource("3_igfc8")]
 z_index = 5
-position = Vector2(-16, 40)
-rotation = -1.5708
+position = Vector2(1428, 721)
 tilemap = NodePath("../TileMap")
 
 [node name="Enemies" type="Node2D" parent="."]

@@ -4,7 +4,11 @@ extends AIMoveState
 
 
 func enter() -> void:
-	pass
+	actor.animations.play("alert")
+
+
+func exit() -> void:
+	actor.animations.play("lost")
 
 
 func physics_process(delta: float) -> BaseState:
@@ -21,7 +25,7 @@ func physics_process(delta: float) -> BaseState:
 		return return_state
 	
 	var direction := actor.global_position.direction_to(actor.next_location)
-	actor.global_rotation = direction.angle()
+	actor.pivot.global_rotation = direction.angle()
 	var desired_velocity := direction * 200.0
 	var steering := (desired_velocity - actor.velocity) * delta * 4.0
 	apply_acceleration(steering)

@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var collider = $Area2D/CollisionShape2D
 @onready var timer = $Timer
+
 var enemies_alerted = []
 
 

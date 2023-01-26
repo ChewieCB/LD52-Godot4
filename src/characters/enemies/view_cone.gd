@@ -7,7 +7,7 @@ extends Area2D
 		view_angle = val
 @export var FOV: int = 80
 
-@onready var actor = get_parent()
+@onready var actor = get_parent().get_parent()
 
 var cell_size = Vector2(16, 16)
 var space_state
