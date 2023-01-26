@@ -1,0 +1,124 @@
+[gd_scene load_steps=9 format=3 uid="uid://dpxly5gq5xjxu"]
+
+[ext_resource type="Script" path="res://src/ui/ui.gd" id="1_mtiq4"]
+[ext_resource type="Texture2D" uid="uid://gsndob7diec5" path="res://assets/ui/frames/43.png" id="1_wtd06"]
+[ext_resource type="Texture2D" uid="uid://dierqffgersma" path="res://assets/ui/frames/1.png" id="2_wh2vp"]
+[ext_resource type="Texture2D" uid="uid://cig5cdfbw201u" path="res://assets/ui/frames/18.png" id="3_0mc01"]
+[ext_resource type="Texture2D" uid="uid://c1wcd10a2xpm7" path="res://assets/environment/bottle.png" id="5_gs7ln"]
+[ext_resource type="Texture2D" uid="uid://b2ug4egndt4yo" path="res://assets/ui/frames/41.png" id="6_tfqas"]
+[ext_resource type="Texture2D" uid="uid://cutkg7tt0oxgq" path="res://assets/ui/frames/7.png" id="7_q2s7x"]
+[ext_resource type="Texture2D" uid="uid://d25dim8scc8ul" path="res://assets/environment/key_white_single.png" id="8_jx486"]
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_mtiq4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+offset_right = 640.0
+offset_bottom = 480.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+offset_right = 640.0
+offset_bottom = 157.0
+size_flags_vertical = 3
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+offset_top = 161.0
+offset_right = 640.0
+offset_bottom = 318.0
+size_flags_vertical = 3
+
+[node name="MarginContainer3" type="MarginContainer" parent="MarginContainer/VBoxContainer"]
+offset_top = 322.0
+offset_right = 640.0
+offset_bottom = 480.0
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer3"]
+offset_right = 640.0
+offset_bottom = 158.0
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/MarginContainer"]
+offset_right = 640.0
+offset_bottom = 158.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/MarginContainer/CenterContainer"]
+offset_left = 286.0
+offset_top = 63.0
+offset_right = 354.0
+offset_bottom = 95.0
+
+[node name="Throwable" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/MarginContainer/CenterContainer/HBoxContainer"]
+offset_right = 32.0
+offset_bottom = 32.0
+size_flags_horizontal = 3
+
+[node name="Frame" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer3/MarginContainer/CenterContainer/HBoxContainer/Throwable"]
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("1_wtd06")
+
+[node name="Blood" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer3/MarginContainer/CenterContainer/HBoxContainer/Throwable"]
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("3_0mc01")
+
+[node name="Backing" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer3/MarginContainer/CenterContainer/HBoxContainer/Throwable"]
+modulate = Color(1, 1, 1, 0.607843)
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("2_wh2vp")
+
+[node name="Item" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer3/MarginContainer/CenterContainer/HBoxContainer/Throwable"]
+visible = false
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("5_gs7ln")
+
+[node name="Key" type="MarginContainer" parent="MarginContainer/VBoxContainer/MarginContainer3/MarginContainer/CenterContainer/HBoxContainer"]
+offset_left = 36.0
+offset_right = 68.0
+offset_bottom = 32.0
+size_flags_horizontal = 3
+
+[node name="Frame" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer3/MarginContainer/CenterContainer/HBoxContainer/Key"]
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("6_tfqas")
+
+[node name="Blood" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer3/MarginContainer/CenterContainer/HBoxContainer/Key"]
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("7_q2s7x")
+
+[node name="Backing" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer3/MarginContainer/CenterContainer/HBoxContainer/Key"]
+modulate = Color(1, 1, 1, 0.607843)
+offset_right = 32.0
+offset_bottom = 32.0
+texture = ExtResource("2_wh2vp")
+
+[node name="Item" type="TextureRect" parent="MarginContainer/VBoxContainer/MarginContainer3/MarginContainer/CenterContainer/HBoxContainer/Key"]
+visible = false
+modulate = Color(0.984314, 0.72549, 0.329412, 1)
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 30.0
+offset_bottom = 30.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("8_jx486")

@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://s1f48u0j3txd"]
+
+[ext_resource type="Script" path="res://src/environment/gate/gate.gd" id="1_j78ww"]
+[ext_resource type="Texture2D" uid="uid://dr0lwh3wk3lgh" path="res://assets/environment/tiles/door_temp_vert.png" id="1_tglv1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cj1wl"]
+size = Vector2(4, 96)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_01nqo"]
+radius = 48.0
+
+[node name="Gate" type="StaticBody2D"]
+script = ExtResource("1_j78ww")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_tglv1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_cj1wl")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -40.0
+offset_top = -16.0
+offset_right = 45.0
+offset_bottom = 10.0
+text = "E to unlock"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_01nqo")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

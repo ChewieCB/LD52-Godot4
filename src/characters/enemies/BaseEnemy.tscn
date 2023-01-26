@@ -1,11 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://cs4u6rgsu7gds"]
+[gd_scene load_steps=21 format=3 uid="uid://cs4u6rgsu7gds"]
 
 [ext_resource type="Script" path="res://src/characters/enemies/base_enemy.gd" id="1_85kf1"]
 [ext_resource type="Texture2D" uid="uid://cgdhkvbmdb4t5" path="res://assets/characters/enemy_melee_temp.png" id="1_n0agb"]
-[ext_resource type="Texture2D" uid="uid://5curs4u07t1g" path="res://assets/characters/player_light_ref_no_rear_tall.png" id="2_k35c3"]
+[ext_resource type="Texture2D" uid="uid://c2xpqch46vx1u" path="res://assets/characters/enemy/enemy_head_1.png" id="2_om4yc"]
+[ext_resource type="Texture2D" uid="uid://cb5d1qr6dbggw" path="res://assets/characters/enemy/enemy_head_2.png" id="3_0qanh"]
+[ext_resource type="Texture2D" uid="uid://1auou1kox6q3" path="res://assets/characters/player/player_feet.png" id="3_7ki4u"]
 [ext_resource type="Script" path="res://src/utils/state_machine/state_manager.gd" id="3_guvyg"]
+[ext_resource type="Texture2D" uid="uid://dikqtgrssa33l" path="res://assets/characters/enemy/enemy_head_3.png" id="4_7ir42"]
 [ext_resource type="Script" path="res://src/characters/enemies/states/ai_move_state.gd" id="4_bp7av"]
+[ext_resource type="Texture2D" uid="uid://ch0am1mmug42u" path="res://assets/characters/enemy/enemy_body_knife.png" id="4_pi84m"]
 [ext_resource type="Script" path="res://src/characters/enemies/states/idle_state.gd" id="5_3y0yx"]
+[ext_resource type="Texture2D" uid="uid://c0oiwec80xo6s" path="res://assets/characters/player_light_flat.png" id="5_31cbm"]
+[ext_resource type="Texture2D" uid="uid://d3gy60tkfynbg" path="res://assets/characters/enemy_light.png" id="5_42j2a"]
 [ext_resource type="Script" path="res://src/characters/enemies/states/follow_state.gd" id="6_mksb5"]
 [ext_resource type="Script" path="res://src/characters/enemies/states/chase_state.gd" id="6_ti6pu"]
 [ext_resource type="Script" path="res://src/characters/enemies/states/search_state.gd" id="8_psnr6"]
@@ -20,23 +26,45 @@ size = Vector2(20, 23)
 points = PackedVector2Array(-8, -1, 188.107, -165.554, 193.731, -158.609, 201.703, -147.836, 206.7, -140.428, 213.702, -129, 218.035, -121.185, 224.015, -109.19, 227.649, -101.027, 232.561, -88.5572, 235.47, -80.1084, 239.277, -67.2577, 241.439, -58.5875, 244.111, -45.4539, 245.509, -36.6283, 247.026, -23.3119, 247.649, -14.398, 248, -1, 247.844, 7.93427, 247.026, 21.3119, 246.092, 30.1986, 244.111, 43.4539, 242.406, 52.2254, 239.277, 65.2577, 236.814, 73.8472, 232.561, 86.5572, 229.359, 94.8993, 224.015, 107.19, 220.098, 115.222, 213.702, 127, 209.1, 134.659, 201.703, 145.836, 196.451, 153.065, 188.107, 163.554)
 
 [node name="BaseEnemy" type="CharacterBody2D"]
+position = Vector2(-1, 0)
 collision_layer = 4
-collision_mask = 15
+collision_mask = 7
 motion_mode = 1
 safe_margin = 0.5
 script = ExtResource("1_85kf1")
+head_sprites = [ExtResource("2_om4yc"), ExtResource("3_0qanh"), ExtResource("4_7ir42")]
 
-[node name="ViewLight" type="PointLight2D" parent="."]
-position = Vector2(111, 0)
-color = Color(0.866667, 0.443137, 0.231373, 1)
-blend_mode = 2
+[node name="EnemyLight" type="PointLight2D" parent="."]
+color = Color(0.803922, 0.407843, 0.239216, 1)
 range_item_cull_mask = 3
 shadow_enabled = true
 shadow_item_cull_mask = 7
-texture = ExtResource("2_k35c3")
+texture = ExtResource("5_42j2a")
+texture_scale = 0.25
+
+[node name="ViewLight" type="PointLight2D" parent="."]
+position = Vector2(85, 0)
+color = Color(0.803922, 0.407843, 0.239216, 1)
+range_item_cull_mask = 3
+shadow_enabled = true
+shadow_item_cull_mask = 7
+texture = ExtResource("5_31cbm")
 texture_scale = 0.5
 
+[node name="Sprite" type="Node2D" parent="."]
+rotation = 1.5708
+
+[node name="Feet" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("3_7ki4u")
+
+[node name="Body" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("4_pi84m")
+
+[node name="Head" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("3_7ki4u")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_n0agb")
 
@@ -113,6 +141,8 @@ attack_state = NodePath(".")
 wait_time = 0.4
 
 [node name="ViewCone" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 17
 script = ExtResource("11_8eg5v")
 view_angle = 0
 
@@ -120,15 +150,14 @@ view_angle = 0
 shape = SubResource("ConvexPolygonShape2D_xyq0w")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 32.0
+path_desired_distance = 64.0
 target_desired_distance = 24.0
-path_max_distance = 64.0
+path_max_distance = 100.0
 avoidance_enabled = true
 radius = 48.0
 neighbor_distance = 250.0
 
 [node name="StateLabel" type="Label" parent="."]
-visible = false
 modulate = Color(0, 0, 0, 1)
 offset_left = -24.0
 offset_top = -48.0

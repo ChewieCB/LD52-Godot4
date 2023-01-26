@@ -1,6 +1,8 @@
+/home/jackm/Documents/Godot4/LD52/dist/0.1
+res://src/levels/test
+res://src/ui
 res://src/levels/test/01
 res://src/characters
-res://src/levels/test
 res://assets/environment/tiles
 res://src/characters/enemies/states
 res://src/utils/state_machine

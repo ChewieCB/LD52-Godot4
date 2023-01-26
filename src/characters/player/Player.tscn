@@ -1,14 +1,19 @@
-[gd_scene load_steps=11 format=3 uid="uid://byol1svprhp55"]
+[gd_scene load_steps=16 format=3 uid="uid://byol1svprhp55"]
 
-[ext_resource type="Texture2D" uid="uid://sh4yhtwa8ba" path="res://assets/characters/player_temp.png" id="1_bue6g"]
 [ext_resource type="Script" path="res://src/characters/player/player.gd" id="1_nrqrt"]
-[ext_resource type="Texture2D" uid="uid://dclu43qoi5s4t" path="res://assets/characters/player_light_ref_2.png" id="2_4ldox"]
 [ext_resource type="Texture2D" uid="uid://b625abpl18xs1" path="res://assets/characters/player_light_alt.png" id="2_21jih"]
 [ext_resource type="Script" path="res://src/utils/state_machine/states/move_state.gd" id="3_dl3ym"]
 [ext_resource type="Script" path="res://src/utils/state_machine/state_manager.gd" id="3_f1tag"]
+[ext_resource type="Texture2D" uid="uid://c0oiwec80xo6s" path="res://assets/characters/player_light_flat.png" id="4_7xbv0"]
+[ext_resource type="Texture2D" uid="uid://1auou1kox6q3" path="res://assets/characters/player/player_feet.png" id="4_umlvu"]
 [ext_resource type="Script" path="res://src/characters/player/states/idle_state.gd" id="4_yo3vx"]
+[ext_resource type="Texture2D" uid="uid://dhadpt7mb7b4r" path="res://assets/characters/player/player_body.png" id="5_2p0fa"]
 [ext_resource type="Script" path="res://src/characters/player/states/walk_state.gd" id="5_6avw1"]
+[ext_resource type="Texture2D" uid="uid://c1wcd10a2xpm7" path="res://assets/environment/bottle.png" id="6_josfb"]
+[ext_resource type="Texture2D" uid="uid://clqol57nexkv2" path="res://assets/characters/player/player_head.png" id="6_jxrsh"]
 [ext_resource type="Script" path="res://src/characters/player/states/death_state.gd" id="7_p6jiq"]
+[ext_resource type="PackedScene" uid="uid://dpxly5gq5xjxu" path="res://src/ui/UI.tscn" id="12_e0r08"]
+[ext_resource type="Texture2D" uid="uid://don0f355xwemh" path="res://assets/ui/throw_crosshair.png" id="13_ghibr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d6wnf"]
 size = Vector2(15, 21)
@@ -18,31 +23,52 @@ collision_mask = 7
 motion_mode = 1
 script = ExtResource("1_nrqrt")
 
+[node name="Aim" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(0.611765, 0.611765, 0.611765, 0.682353)
+texture = ExtResource("13_ghibr")
+
 [node name="PlayerLight" type="PointLight2D" parent="."]
 light_mask = 9
 z_index = 1
-color = Color(0.772549, 0.615686, 0.333333, 1)
+color = Color(0.662745, 0.698039, 0.635294, 1)
 energy = 0.75
 blend_mode = 2
 range_item_cull_mask = 7
 shadow_enabled = true
 shadow_item_cull_mask = 2
 texture = ExtResource("2_21jih")
-texture_scale = 0.75
+texture_scale = 0.5
 
 [node name="ViewLight" type="PointLight2D" parent="."]
+visible = false
 light_mask = 9
-color = Color(0.772549, 0.615686, 0.333333, 1)
+position = Vector2(88, 0)
+color = Color(0.662745, 0.698039, 0.635294, 1)
 blend_mode = 2
 range_item_cull_mask = 3
 shadow_enabled = true
 shadow_item_cull_mask = 7
-texture = ExtResource("2_4ldox")
+texture = ExtResource("4_7xbv0")
+texture_scale = 0.5
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("1_bue6g")
-region_rect = Rect2(0, 0, 48, 32)
+[node name="Sprite" type="Node2D" parent="."]
+rotation = 1.5708
+
+[node name="Feet" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("4_umlvu")
+
+[node name="Bottle" type="Sprite2D" parent="Sprite"]
+visible = false
+position = Vector2(6.99998, -5.00002)
+rotation = 3.19677
+texture = ExtResource("6_josfb")
+
+[node name="Body" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("5_2p0fa")
+
+[node name="Head" type="Sprite2D" parent="Sprite"]
+texture = ExtResource("6_jxrsh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.5, -0.5)
@@ -88,3 +114,7 @@ size_flags_horizontal = 4
 text = "STATE"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="UILayer" type="CanvasLayer" parent="."]
+
+[node name="UI" parent="UILayer" instance=ExtResource("12_e0r08")]

@@ -1,6 +1,8 @@
 class_name BaseEnemy
 extends BaseCharacter
 
+@export var head_sprites: Array[Texture2D]
+
 @export @onready var player: Player
 @export @onready var target_node: Node
 @export @onready var follow_path: Path2D
@@ -23,6 +25,11 @@ var last_seen_player: Vector2
 
 func _ready() -> void:
 	super._ready()
+	if head_sprites:
+		var random = RandomNumberGenerator.new()
+		random.randomize()
+		var head_index = random.randi_range(0, head_sprites.size() - 1)
+		$Sprite/Head.texture = head_sprites[head_index]
 	if target_node:
 		target = target_node.global_position
 	if target:
@@ -30,17 +37,13 @@ func _ready() -> void:
 		last_seen_player = target
 
 
-#func _draw() -> void:
-#	if target:
-#		draw_circle(to_local(target), 8.0, Color.RED)
-##		if nav_path:
-##			for idx in range(nav_path.size() - 2):
-##				if idx == 0:
-##					draw_line(position, to_local(nav_path[idx]), Color.RED, 2.0)
-##				else:
-##					draw_line(to_local(nav_path[idx-1]), to_local(nav_path[idx]), Color.RED, 2.0)
-#	if last_seen_player:
-#		draw_circle(to_local(last_seen_player), 8.0, Color.PURPLE)
+func _draw() -> void:
+	if target:
+		draw_circle(to_local(target), 8.0, Color.RED)
+		for point in _agent.get_current_navigation_path():
+			draw_circle(to_local(point), 2.0, Color.GREEN_YELLOW)
+	if last_seen_player:
+		draw_circle(to_local(last_seen_player), 8.0, Color.PURPLE)
 
 
 func _process(_delta: float) -> void:
@@ -84,7 +87,7 @@ func _on_view_cone_body_exited(body):
 			# Add the point where the ray collides
 			exit_position = result["position"]
 		# Move the closest point a bit closer to the enemy to keep it in bounds
-		exit_position += exit_position.direction_to(global_position) * 8
+		exit_position += exit_position.direction_to(global_position) * 32
 		last_seen_player = exit_position
 		target_node = null
 

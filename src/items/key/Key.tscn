@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://5dtjsvcdae8u"]
+
+[ext_resource type="Script" path="res://src/items/key/key.gd" id="1_4ito0"]
+[ext_resource type="Texture2D" uid="uid://d2c2vupjnx2kx" path="res://assets/environment/key-white.png" id="1_xch14"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ogwnl"]
+radius = 29.0689
+
+[node name="Key" type="Node2D"]
+script = ExtResource("1_4ito0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.984314, 0.72549, 0.329412, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xch14")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ogwnl")
+
+[node name="Label" type="Label" parent="."]
+visible = false
+offset_left = -41.0
+offset_top = -37.0
+offset_right = 44.0
+offset_bottom = -11.0
+text = "E to pickup"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
