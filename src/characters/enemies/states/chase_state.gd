@@ -15,7 +15,7 @@ func physics_process(delta: float) -> BaseState:
 	if actor.target == Vector2.ZERO:
 		return search_state
 	
-	if actor.distance_to_target < 30 and actor.target_node:
+	if actor.distance_to_target < 32 and actor.target_node:
 		return attack_state
 	
 	if not actor.can_chase:

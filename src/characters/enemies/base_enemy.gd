@@ -39,13 +39,13 @@ func _ready() -> void:
 		last_seen_player = target
 
 
-func _draw() -> void:
-	if target:
-		draw_circle(to_local(target), 8.0, Color.RED)
-		for point in _agent.get_current_navigation_path():
-			draw_circle(to_local(point), 2.0, Color.GREEN_YELLOW)
-	if last_seen_player:
-		draw_circle(to_local(last_seen_player), 8.0, Color.PURPLE)
+#func _draw() -> void:
+#	if target:
+#		draw_circle(to_local(target), 8.0, Color.RED)
+#		for point in _agent.get_current_navigation_path():
+#			draw_circle(to_local(point), 2.0, Color.GREEN_YELLOW)
+#	if last_seen_player:
+#		draw_circle(to_local(last_seen_player), 8.0, Color.PURPLE)
 
 
 func _process(_delta: float) -> void:

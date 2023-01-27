@@ -1,8 +1,8 @@
 class_name MoveState
 extends BaseState
 
-@export var move_speed: float = 95
-@export var max_speed: float = 140
+@export var move_speed: float = 75
+@export var max_speed: float = 110
 
 @export var idle_state: MoveState
 @export var walk_state: MoveState

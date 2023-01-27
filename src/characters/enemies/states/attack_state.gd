@@ -26,6 +26,9 @@ func physics_process(delta: float) -> BaseState:
 		timer_finished = false
 		return move_state.return_state
 	
+	var direction := actor.global_position.direction_to(actor.target)
+	actor.pivot.global_rotation = direction.angle()
+	
 	return null
 
 

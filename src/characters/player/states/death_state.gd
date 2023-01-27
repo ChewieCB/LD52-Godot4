@@ -2,7 +2,7 @@ extends BaseState
 
 
 func enter() -> void:
-	pass
+	actor.blood.restart()
 
 
 func physics_process(_delta: float) -> BaseState:

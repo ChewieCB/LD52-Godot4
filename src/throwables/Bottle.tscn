@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bbpg3n7iyu6h8" path="res://assets/audio/sfx/glass/glass_break_2.mp3" id="3_2r2mc"]
 [ext_resource type="AudioStream" uid="uid://djgcl3vkc2k24" path="res://assets/audio/sfx/glass/glass_break_3.mp3" id="4_jlyb8"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_1rl0f"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_31h5t"]
 size = Vector2(6, 14)
 
 [node name="Bottle" type="CharacterBody2D"]
@@ -21,7 +21,7 @@ glass_sfx = [ExtResource("2_m2y7r"), ExtResource("3_2r2mc"), ExtResource("4_jlyb
 texture = ExtResource("1_nuow5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_1rl0f")
+shape = SubResource("RectangleShape2D_31h5t")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 autoplay = true

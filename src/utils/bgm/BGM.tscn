@@ -1,0 +1,16 @@
+[gd_scene load_steps=6 format=3 uid="uid://6c22bjejitbn"]
+
+[ext_resource type="Script" path="res://src/utils/bgm/bgm.gd" id="1_4d81j"]
+[ext_resource type="AudioStream" uid="uid://ba0v85lpgau7f" path="res://assets/audio/music/track_1.mp3" id="2_322ly"]
+[ext_resource type="AudioStream" uid="uid://bwaxjymgc0c1y" path="res://assets/audio/music/track_2.mp3" id="3_pqp3a"]
+[ext_resource type="AudioStream" uid="uid://c5jujprdpjimi" path="res://assets/audio/music/track_3.mp3" id="4_4acal"]
+[ext_resource type="AudioStream" uid="uid://br0k802fs1f0t" path="res://assets/audio/music/track_4.mp3" id="5_6ka7j"]
+
+[node name="BGM" type="Node2D"]
+script = ExtResource("1_4d81j")
+music_tracks = [ExtResource("2_322ly"), ExtResource("3_pqp3a"), ExtResource("4_4acal"), ExtResource("5_6ka7j")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

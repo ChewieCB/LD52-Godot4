@@ -1,4 +1,6 @@
 AudioStreamPlayer2D
+AudioStreamPlayer
+CPUParticles2D
 AnimationPlayer
 CollisionShape2D
 CollisionPolygon2D
@@ -28,5 +30,3 @@ NavigationRegion2D
 NavigationLink2D
 NavigationAgent2D
 MoveState
-Node
-Camera2D

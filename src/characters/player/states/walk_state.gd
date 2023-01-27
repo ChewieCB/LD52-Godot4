@@ -5,6 +5,7 @@ extends MoveState
 
 func enter() -> void:
 	super.enter()
+	actor.audio_player.play()
 
 
 func physics_process(delta: float) -> BaseState:

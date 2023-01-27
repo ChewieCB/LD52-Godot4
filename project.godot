@@ -88,6 +88,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Helper="*res://src/utils/scripts/helper.gd"
+Bgm="*res://src/utils/bgm/BGM.tscn"
 
 [display]
 

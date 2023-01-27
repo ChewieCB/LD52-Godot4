@@ -2,8 +2,13 @@ class_name Player
 extends BaseCharacter
 
 @onready @export var tilemap: TileMap
+@export var walk_sfx: AudioStreamMP3
+@export var walk_crop_sfx: AudioStreamMP3
+
 @onready var ui = $UILayer/UI
 @onready var crosshair = $Aim
+@onready var blood = $BloodSplatter
+@onready var audio_player = $AudioStreamPlayer2D
 
 var bottle = preload("res://src/throwables/Bottle.tscn")
 
@@ -30,7 +35,7 @@ var keys = []
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			if has_throwable:
+			if has_throwable and states.current_state != $StateManager/DeathState:
 				# Spawn a bottle
 				var bottle_instance = bottle.instantiate()
 				bottle_instance.global_position = global_position
@@ -48,6 +53,9 @@ func _physics_process(delta: float) -> void:
 	
 	crosshair.global_position = get_global_mouse_position()
 	
+	print(audio_player.stream)
+	print(audio_player.is_playing())
+	
 	states.physics_process(delta)
 	
 	# TODO - find a better way to check this
@@ -59,12 +67,26 @@ func _physics_process(delta: float) -> void:
 				is_torch_enabled = false
 				move_modifier = 0.70
 				$PlayerLight.texture_scale = 0.2
+				change_walk_sfx(walk_crop_sfx)
 			else:
 				is_torch_enabled = true
 				move_modifier = 1.0
 				$PlayerLight.texture_scale = 0.25
+				change_walk_sfx(walk_sfx)
 	
 	if keys.size() > 0:
 		ui.has_key = true
 	else:
 		ui.has_key = false
+
+
+func change_walk_sfx(sfx):
+	if audio_player.stream == sfx:
+		return
+	if audio_player.is_playing():
+		audio_player.stop()
+	audio_player.stream = sfx
+	audio_player.play()
+	
+	
+
